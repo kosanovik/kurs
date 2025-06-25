@@ -11,4 +11,4 @@ word = input("введите слово для анализа длины: ")
 if not word or len(word) < 4:
     print("вы ничего не ввели или слово слишком короткое")
 if len(word) > 3:
-    print("длина слова",""+ word + "", "=", len(word))
+    print('Длина слова "' + word + '" =', len(word))
