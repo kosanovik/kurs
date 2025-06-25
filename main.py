@@ -1,15 +1,18 @@
-# формат вывода
-# \ - начало управляющей последовательности escape sequence
-# \n - перевод строки (enter)
-# \t - табуляция (пробел)
-# \x - вывод символа по 2м знакоместам 16-формате (ASCII)
-# \u - вывод символа по 4м знакоместам 16-формате (Unicode)
-# Burned Again Shell
-word1 = "пришел"
-word2 = "увидел"
-word3 = "победил"
-word4 = "27\xB0C" # ACSII
+# формат вывода 2
 
-print(word1, word2, word3, sep=", ", end=" -> ")
-print(word4)
-print("концерт группы \"Кино\"")
+name = "Игорь"
+email = "aaa@bbb.ru"
+age = 32
+weight = 54.656565
+
+# 1 способ (плейсхолдеры)
+# %s - string
+# %d - digit (целое число)
+# %f - float
+print("Имя: %s, E-mail: %s, Возраст: %d" % (name, email, age))
+
+# 2 способ
+print("Имя: {}, E-mail: {}, Возраст: {}" . format(name, email, age))
+
+# 3 способ (самый популярный с версии 3,6)
+print(f"Имя; {name}, E-mail: {email}, Возраст: {age}, Вес: {weight:.3f}")
