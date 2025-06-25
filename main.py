@@ -1,14 +1,15 @@
-# Interable object
-# len() - сколько элементов в объекте
+# формат вывода
+# \ - начало управляющей последовательности escape sequence
+# \n - перевод строки (enter)
+# \t - табуляция (пробел)
+# \x - вывод символа по 2м знакоместам 16-формате (ASCII)
+# \u - вывод символа по 4м знакоместам 16-формате (Unicode)
+# Burned Again Shell
+word1 = "пришел"
+word2 = "увидел"
+word3 = "победил"
+word4 = "27\xB0C" # ACSII
 
-a = 123456 # int - не является iterable
-
-length = len(str(a)) # поэтому конвертируем в str
-
-print(length)
-
-word = input("введите слово для анализа длины: ")
-if not word or len(word) < 4:
-    print("вы ничего не ввели или слово слишком короткое")
-if len(word) > 3:
-    print('Длина слова "' + word + '" =', len(word))
+print(word1, word2, word3, sep=", ", end=" -> ")
+print(word4)
+print("концерт группы \"Кино\"")
