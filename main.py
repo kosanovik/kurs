@@ -1,18 +1,7 @@
 # match - case (3.10 >)
-print("Возможные ходы:\n\tL - влево\n\tR - вправо\n\tF - прямо")
+counter = 1
 
-
-while True:
-    ch = input("Ваш выбор: ")
-    match ch:
-        case "L" | "l" | "Д" | "д":
-            print("Свернули налево")
-        case "R" | "r" | "К" | 'к':
-            print("Свернули направо")
-        case "F" | "f" | "А" | "а":
-            print("Пошли прямо")
-        case "Й" | "й" | "Q" | "q":
-            print("До свидания!")
-            break
-        case _: # degault
-            print("Выбор не ясен")
+while counter <= 100:
+    if counter % 10 == 3:
+        print(counter, end=", ")
+    counter += 1
