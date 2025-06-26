@@ -9,7 +9,7 @@
 #                   0       3   1
 # итератор range(start, stop, step)
 
-for i in range(0, 101, 5):
+for i in range(5, 96, 5):
 # stop не включается
-    if i != 15:
+
         print(i)
