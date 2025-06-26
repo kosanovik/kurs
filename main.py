@@ -1,6 +1,8 @@
-# ключевое слово in
+# цикл for
+# for <переменная>. in iterable object:
+#    команды
 
-woed = "поток"
+word = "поток"
 
-if "ток" in word:
-    print("Есть")
+for ch in word:
+    print(ch)
