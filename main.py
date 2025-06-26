@@ -1,7 +1,6 @@
-# match - case (3.10 >)
-counter = 1
+# ключевое слово in
 
-while counter <= 100:
-    if counter % 10 == 3:
-        print(counter, end=", ")
-    counter += 1
+woed = "поток"
+
+if "ток" in word:
+    print("Есть")
