@@ -19,10 +19,8 @@ print("Python".index("h")) # индекс символа
 
 # Каждая буква повторяется столько раз, какой ее номер в строке (считаем с 1)
 
-word = "статор"
-res = ""
-
-for i in range(len(word)):
-    print(word[i] * (i + 1), end="")
+temp = int(input("Введите слово: ").strip())
+word = "ротор"
+print(word.strip("р")) # избавление от лишних символов
 
 
