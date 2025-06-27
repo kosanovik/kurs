@@ -1,25 +1,26 @@
-# Подбор по росту
-# 150 < height < 180
-# вводим до момента когда будет введен -1
-# число кандидатов, число прошедших по критерию, минимальное и максимальное значение по критерию
-from functools import total_ordering
+# Колекции (set, list, dict, tuple)
+# Множество
 
-total = 0
-total_success = 0
-total_unsuccess = 0
-min_val = float("inf")
-max_val = float("-inf")
-
-while (num := int(input("Введите рост: "))) != -1:
-    if 150 <= num <= 180:
-        total_success += 1
-        if min_val > num:
-            min_val = num
-        if num > max_val:
-            max_val = num
-    total += 1
-
-print(f"Число кандидатов: {total}")
-print(f"Число прошедших отбор: {total_success}")
-print(f"Число минимального роста: {min_val}")
-print(f"Число максимального роста: {max_val}")
+s = set() # пустое множество
+# print(dir(s)) - список методов множества
+# s = {"3", "5", "7"} # неупорядоченная коллекция данных
+s = {"3", "5", "7", "3", "7"} # повторы убируться
+# удаление
+s.add(8) # добавление
+s.remove(8) # вызывает ошибку если
+s.discard(8) # удаляет в слепую
+# s.clear() # очищает множество
+temp = s.pop() # удаляет случайный и возвращает его
+print(temp)
+# s.remove(8)
+print(type(s)) # класс
+# print(s)
+print(f"Число элементов в s = {len(s)}")
+print("Присутствует ли 3")
+if "3" in s:
+    print("Да")
+else:
+    print("нет")
+for item in s:
+    if item == "3":
+        print(item)
