@@ -1,26 +1,21 @@
-# PEP8 - правила именования
-# c, l, O, I - не должно быть похоже
-# Операции над множествами
+# удаление всех карт кроме туза
 
-a = {1, 2, 3}
-b = {1, 2, 4}
+cards = {3, 7, "T", "D", "V", "K"}
 
-# Объединение множеств
-c = a.union(b)
-# c = a | b
-print(c)
+ace = {"T"}
 
-# Пересечение элементов которые есть в обеих множествах
-c = a.intersection(b) # и там, и там
-# с = a & b
-print(c)
+result = cards - ace
+print(result)
 
-# Разность
-c = b.difference(a) # есть в первом, но нет во втором
-# c = b - a
-print(c)
+t_is = False
+# 2й вариант
+while cards:
+    card = cards.pop()
+    if card == "T":
+        cards.add(card)
+        t_is = True
+    else:
+        print(cards)
 
-# Симетричная разность
-c = a.symmetric_difference(b) # есть только в одном из двух
-# c = b ^ a
-print(c)
+    if t_is and len(cards) == 1
+        break
