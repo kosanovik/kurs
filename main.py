@@ -1,15 +1,17 @@
 # Cтроки (immutable, iterable) является не изменяемыми
-# Задача: исправить букву в слове сабака
+# Таблица символов
 
-s = "сабака"
-res = ""
+s = "\xB0"
+u = "\u2603"
 
-for i in range(len(s)):
-    if i == 1: # я знаю, что по индексу 1 надо написать "о"
-        res += "о"
-    else:
-        res += s[i]
+# две удобные функции
+# ord(симмвол) - возвращает код символа в unicode
+# ord(код) - возвращает символа по unicode-коду
 
-print(res)
-
+print(u)
+print("25" + s + "C")
+print(f"Код снеговика в Unicode: {ord("☃")}")
+print(chr(9731))
+print(chr(10000))
+print(chr(176)) # ASCII и Unicode
 
