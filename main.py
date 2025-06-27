@@ -1,32 +1,28 @@
 # Cтроки (immutable, iterable) является не изменяемыми
-# Таблица символов
-from importlib.metadata import pass_none
+from ctypes.wintypes import PWORD
 
-s = "\xB0"
-u = "\u2603"
+# abc = "абвгдеёжзийклмнопрстуфхцшщъыьэюя"
 
-# две удобные функции
-# ord(симмвол) - возвращает код символа в unicode
-# ord(код) - возвращает символа по unicode-коду
+# print(dir(abc))
 
-print(u)
-print("25" + s + "C")
-print(f"Код снеговика в Unicode: {ord("☃")}")
-print(chr(9731))
-print(chr(10000))
-print(chr(176)) # ASCII и Unicode
+phrase = "Язык Python"
 
-s = set()
-word = input("Введите фразу для зашифровки: ")
-# Зашифровываем
-for ch in word:
-    s.add(ord(ch))
+print(phrase.lower()) # все маленькие
+print(phrase.upper()) # все большие
+print(phrase.capitalize()) # толькая первая буква заглавная
+print(phrase.title()) # все слова с заглавной
 
-print(s)
+print("Ура! " * 3) # повторение строки
 
-# Расшифровываем
+print("Телевизор". count("е")) # количество вхождений подстроки
+print("Python".index("h")) # индекс символа
 
+# Каждая буква повторяется столько раз, какой ее номер в строке (считаем с 1)
+
+word = "статор"
 res = ""
-for i in s:
-    res += chr(i)
-print(res)
+
+for i in range(len(word)):
+    print(word[i] * (i + 1), end="")
+
+
