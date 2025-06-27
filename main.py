@@ -1,21 +1,19 @@
-# удаление всех карт кроме туза
+# Cтроки (immutable, iterable) является не изменяемыми
+s = ""
+print(id(s)) # адрес
+s += "Привет"
+print(id(s))
+print(s)
+print(id(s))
+s += ", Дмитрий!"
+print(s)
+print(id(s))
 
-cards = {3, 7, "T", "D", "V", "K"}
+#    012345
+s = "Python"
+# s[3] = "y" - "y" error
+# Индекс может быть отрицательным (с конца)
+print(f"Длина слова: {len(s)}")
+print(s[-5])
 
-ace = {"T"}
 
-result = cards - ace
-print(result)
-
-t_is = False
-# 2й вариант
-while cards:
-    card = cards.pop()
-    if card == "T":
-        cards.add(card)
-        t_is = True
-    else:
-        print(cards)
-
-    if t_is and len(cards) == 1
-        break
