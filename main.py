@@ -1,12 +1,12 @@
 # Кортеж (tuple, immutable) не изменямый список
-# Функция sorted() - возвращает сортированный список
+# Функция enumerate() - в цикле for  возвращает пару (i, v)
 
-s = {'петров', 'сидоров', 'иванов'}
-r = False # True
 
-# lst = list(s)
-# lst.sort()
+fio = ['петров', 'сидоров', 'иванов']
 
-lst = sorted(s, reverse=r)
+# for item in enumerate(fio):
+# print(item)
+for i, v in enumerate(fio):
+    print(f'{i +1}. {v}.')
 
-print(*lst, sep=", ")
+# python.org
