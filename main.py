@@ -1,26 +1,16 @@
 # Кортеж (tuple, immutable) не изменямый список
 
-BLACK = (0, 0, 0)
-empty = () # tuple()
+channels = ["red", "green", "blue"]
 
-one = (1,)
-temper = 36, 6
+r, g, b = channels # распаковка
 
-s = "Python"
+print(r)
+print(g)
 
-t = tuple(s) + (".",)
-print(t)
+r, *g = channels
+print(r)
+print(g)
 
-# count, index
-
-cards = [(7, "червей"), ("туз", "пик")]
-
-print(7 == 7)
-
-print((1, 2) < (1, 3))
-a = 3
-b = 4
-a, b = b, a
-
-# можно спросить длину
-
+channels = [128, 200, 155]
+r, g, b = channels
+print(r, g, b)
