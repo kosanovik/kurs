@@ -1,17 +1,26 @@
-# Списки (list)
-# Создание аббревиатур
+# Кортеж (tuple, immutable) не изменямый список
 
-# 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort'
+BLACK = (0, 0, 0)
+empty = () # tuple()
 
-N = 5
+one = (1,)
+temper = 36, 6
 
-lst = [] # пустой список
+s = "Python"
 
-while (word := input("Введите слово: ").strip()) != "":
-    lst.append(word[0].upper())
+t = tuple(s) + (".",)
+print(t)
 
-print("Получилась аббревиатура", end=": ")
-print(*lst, sep="") # *lst[:10] - первые 10
+# count, index
 
+cards = [(7, "червей"), ("туз", "пик")]
 
+print(7 == 7)
+
+print((1, 2) < (1, 3))
+a = 3
+b = 4
+a, b = b, a
+
+# можно спросить длину
 
