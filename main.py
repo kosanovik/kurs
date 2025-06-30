@@ -1,14 +1,22 @@
 # Списки (list)
-import ast
 
-import a
+
 
 # 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort'
 
-а = ["a", "b", "c"]
-b = a[:] # a.copy()
-b.append("d")
-print(id(a))
-print(id(b))
-print(a)
-print(b)
+lst = [] # пустой список
+while (item := input("Ингредиенты: ")) != "":
+    lst.append(item)
+
+
+temp = set(lst)
+lst = list(temp)
+
+print(f"У нас есть {len(lst)} ингредиентов: ")
+
+lst.sort()
+
+for i in range(len(lst)):
+    print(f"{i + 1}. {lst[i]}")
+
+
