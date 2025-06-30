@@ -1,16 +1,15 @@
 # Кортеж (tuple, immutable) не изменямый список
+# Студент и средний бал
 
-channels = ["red", "green", "blue"]
+N=3
+students = []
+for _ in range(N):
+    student, averge = input("ФИО: "), float(input("Ср. бал: "))
+    students.append((student, averge))
+    
+print(students)
 
-r, g, b = channels # распаковка
-
-print(r)
-print(g)
-
-r, *g = channels
-print(r)
-print(g)
-
-channels = [128, 200, 155]
-r, g, b = channels
-print(r, g, b)
+for st in students:
+    student, averge = st
+    print("Студент: ", student)
+    print("Средний бал: ", averge)
