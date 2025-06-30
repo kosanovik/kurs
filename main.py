@@ -1,45 +1,14 @@
-# Cтроки (immutable, iterable) является не изменяемыми
-# Срез (у строки и у других коллекций, кроме set)
-# [начало:окончание:шаг]
+# Списки (list)
+import ast
 
-s = "добрый день"
+import a
 
-print(s[0:6:1]) # Объект типо set не может использовать множество print(s[:6])
-print(s[:6]) # от начала и до заданного индекса
-print(s[7:11:1])
-print(s[7:]) # от текущего и до конца
-print(s[3:8]) # от n до m (не включая)
+# 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort'
 
-print(s[:-6])
-print(s[::2]) # от начала до конца с шагом 2
-print(s[::-1])
-
-s = input("Введите строку: ").strip() # "потоп"
-
-if s.lower() == s[::-1].lower():
-    print(f"Строка {s} - палиндром!")
-else:
-    print(f"Строка {s} - не палиндром!")
-
-# Задачки
-
-s = "Дорог Рим город или дорог Миргород" # + и *
-# Миргород нам дорог... дорог...
-s1 = s[26:35]
-s2 = s[20:25] + "..."
-print(s1, s2 * 2)
-
-t = "..."
-print(s[26:] + (s[19:25] + t) * 2)
-
-s = "Дорог Рим"
-# Город Миргород
-temp = s.lower()
-city = temp[:5][::-1]
-res = city + " " + temp[6:][::-1] + city
-
-print(res.title())
-
-
-
-
+а = ["a", "b", "c"]
+b = a[:] # a.copy()
+b.append("d")
+print(id(a))
+print(id(b))
+print(a)
+print(b)
