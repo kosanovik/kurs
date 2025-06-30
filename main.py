@@ -1,15 +1,12 @@
 # Кортеж (tuple, immutable) не изменямый список
-# Студент и средний бал
+# Функция sorted() - возвращает сортированный список
 
-N=3
-students = []
-for _ in range(N):
-    student, averge = input("ФИО: "), float(input("Ср. бал: "))
-    students.append((student, averge))
-    
-print(students)
+s = {'петров', 'сидоров', 'иванов'}
+r = False # True
 
-for st in students:
-    student, averge = st
-    print("Студент: ", student)
-    print("Средний бал: ", averge)
+# lst = list(s)
+# lst.sort()
+
+lst = sorted(s, reverse=r)
+
+print(*lst, sep=", ")
