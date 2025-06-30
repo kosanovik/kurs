@@ -1,26 +1,39 @@
 # Cтроки (immutable, iterable) является не изменяемыми
 from ctypes.wintypes import PWORD
 
-# abc = "абвгдеёжзийклмнопрстуфхцшщъыьэюя"
+from pyexpat.errors import messages
 
-# print(dir(abc))
+# s = "" - строка не изменяемый объект
+# s = set()
+# res = s.add()
+# s = set("") - итерированный объект преобразует в множество (изменяемый объект)
 
-phrase = "Язык Python"
-
-print(phrase.lower()) # все маленькие
-print(phrase.upper()) # все большие
-print(phrase.capitalize()) # толькая первая буква заглавная
-print(phrase.title()) # все слова с заглавной
-
-print("Ура! " * 3) # повторение строки
-
-print("Телевизор". count("е")) # количество вхождений подстроки
-print("Python".index("h")) # индекс символа
-
-# Каждая буква повторяется столько раз, какой ее номер в строке (считаем с 1)
-
-temp = int(input("Введите слово: ").strip())
-word = "ротор"
-print(word.strip("р")) # избавление от лишних символов
+# Создаем алфавит
+alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+# alphabet_u += alphabet.upper()
 
 
+# Получаем входные данные
+message = input("Введите строку: ").strip().lower() # обрубаем пробелы
+key = int(input("Введите ключ: "))
+
+# Инициализируем пустую строку для результата
+encrypted = ("")
+
+# Перебираем каждый символ
+for letter in message:
+    # Проверяем, является ли символ буквой из алфавита
+    if letter in alphabet.index(letter)
+    #
+    # Вычисляем новую позицию с учетом сдвига
+    new_key = (t + key) % len(alphabet)
+    # Добавляем зашифрованный символ
+    encrypted += alphabet[new_key]
+else:
+    # Если символ не буква, оставляем его без изменений
+    encrypted += letter
+
+# Для расшифровки достаточно изменит форму вычисления позиции:
+# new_key = (t - key) % len(alhabet)
+
+print("Зашифрованное сообщение: ",encrypted)
