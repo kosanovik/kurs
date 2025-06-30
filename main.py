@@ -1,39 +1,16 @@
 # Cтроки (immutable, iterable) является не изменяемыми
 # Начало и окончание строки
-# 1. find ("подстрока")
-# 2. find ("подстрока, start") - с какого
-# 3. find ("подстрока, start, end") - с какого
-import numbers
-from itertools import count
-
-import start
-
-s = "Cмотреть, вертеть, видеть"
-
-index = s.find("еть") # ищем с начала строки s
-print(index)
-
-index = s.find("еть", 10) # ищем с позиции start
-print(index)
-
-index = s.find("еть", 10, 15) # ищем с start по end
-print(index)
+# 1. replace("что", "на что") - полная замена
+# 2. replace("что", "на что", сколько раз) - число замен
 
 
-s = "синхрофазотрон" # ищем "о": сколько их и где находятся
-ch = "о"
+s = "тиливизор"
 
-if ch in s:
-    count = s.count(ch)
-    print(f" {ch} встречается в слове {s} {count} раз.")
-    print("Её позиция/позиции:", end="")
-    for i in range(count):
-        pos = s.find(ch, start)
-        numbers.add(pos)
-        start += pos + 1
-        print(pos, end="")
-else:
-    print(f"Буквы {ch} нет в слове {s}.")
+print(s.replace("и", "е", 2))
 
-index = s.find("о")
-print(index)
+s = "+7-012-345-67-89" # => +7 (012) 345-67-89
+
+res = s.replace("-", " (", 1)
+res = res.replace("-", ") ", 1)
+
+print(res)
