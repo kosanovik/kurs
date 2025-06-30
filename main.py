@@ -1,12 +1,18 @@
 # Кортеж (tuple, immutable) не изменямый список
-# Функция enumerate() - в цикле for  возвращает пару (i, v)
+# Методы строки split() - преобразование строки в список и join() - преобразование списка в строку
 
+text = "один два три четыре"
+ip = "192.168.0.1"
 
-fio = ['петров', 'сидоров', 'иванов']
+#lst = text.split(" ")
+lst = ip.split(".")
 
-# for item in enumerate(fio):
-# print(item)
-for i, v in enumerate(fio):
-    print(f'{i +1}. {v}.')
+# ['192', '168', '0', '1']
 
-# python.org
+print(lst)
+
+# text2 = "-".join(lst)
+text2 = " и ".join(lst)
+print(text2)
+
+# значения только строки
