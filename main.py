@@ -1,3 +1,10 @@
+# ДЗ: Функция (которая выводит число чловами): выводить число словами 56 -> триста пятьдесят шесть
+def num_to_word(num):
+    if str(num) > 3:
+        return
+    e = num % 10
+    list = ["один", "два"]
+
 # Функции (Do not Repeat Yourself)
 # Return Value
 
