@@ -1,28 +1,25 @@
-# Кортеж (tuple, immutable) не изменямый список
-# Методы строки split() - преобразование строки в список и join() - преобразование списка в строку
+# Спичочные выражения (list comprehension)
 
-text = "p   t   y no  h  "
+# Список квадратов чисел
+squares = [i ** 2 for i in range(10)] # так стало (что попадет (i**2) и по какой закономерности (for i in range(10))
+# for i in range(10):
+#    squares.append(i**2) - было так
+print(*squares,sep=", ")
+# список квадратов четных чисел
+squares = [i ** 2 for i in range(10) if i % 2 == 0] # (что попадет (i**2) и по какой закономерности (for i in range(10) + условие (if i % 2 == 0))
+print(*squares,sep=", ")
 
+# произведение i и j
 
-res = "".join(text.split()) # убрать все пробелы
+print([i * j for i in range(3) for j in range(3)])
 
-print(res)
+for i in range(3):
+    for j in range(3):
+        print(i * j)
 
-# ДЗ
-# stop_list = []
-# слова из стоп листа не попадают в список. список номерованный
-# вводится текст, стоп лист и получившийся список слов (сортированный по алфавиту без повторов) - стоп_слова убрать в конце
-
-# ДЗ
-
-# Фраза: ну?, я типо, вообще: короче, не понимаю этот язык!
-commas = (',', '!', '.', '?', '-', ':')
-stop_words = {'ну', 'типо', 'короче', 'не'}
-message = input('Введите сообщение: ')
-lst = message.split() # все слова
-for z in commas:
-    message = message.replace(z, '')
-lst = message.split()  # все слова
-res = sorted(set(lst) - stop_words)
-for a, b in enumerate(res, 1):
-    print(f'{a}. {b}')
+n = "400 500 600 700 800 900"
+approved = [500, 800]
+# print([int(i) for i in n.split()]) # split - список
+a = [int(i) for i in n.split() if int(i) in approved]
+# какие то действия со списком a
+print(a)
