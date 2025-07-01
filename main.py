@@ -1,33 +1,19 @@
 # Функции (Do not Repeat Yourself)
-# Scope (local or global(как можно меньше глобальных переменных))
-# Синтаксис
-# def <имя функции>([параметры]):
-#     команды
+# Return Value
 
-# в функцию передается глобальная переменная
+def square(num):
+    return num ** 2
 
+def even_odd(num):
+    if num % 2 == 0:
+        return "Четное"
+    return "Нечетное"
 
-person = "Пётр" # глобальная
-count = 0
+def print_string(s=None):
+    if s is None:
+        return
+    print(s)
 
-
-def greet_to_name(name="noname"):
-    print("Привет,", name)
-    print(count)
-
-
-def increment():
-    global count
-    count += 1
-
-
-def print_list(array=None):
-    if array is None:
-        array = []
-    for item in array:
-        print(item)
-
-
-increment()
-greet_to_name("name")
-print_list()
+t = square(5)
+print(even_odd(5))
+print(t)
