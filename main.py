@@ -1,4 +1,28 @@
 # Словари
+# Частотный анализ
+
+res = {}
+
+text = "Министерство: труда и социальной защиты, разработало проект календаря праздничных и выходных дней на 2026-й год. "
+
+commas = (",", "-", ".", "!", ":")
+for x in commas:
+    text = text.replace(x, "")
+
+lst = text.strip().lower().split()
+print(lst)
+
+for item in lst:
+    if item in res.keys():
+        res[item] += 1
+    else:
+        res[item] = 1
+
+print("Частотный анализ слов текста")
+for k, v in  res.items():
+    print(f"\t{k}: {v}")
+
+
 # Пустой словарь
 # 1. d = {}
 # 2. d = dict()
