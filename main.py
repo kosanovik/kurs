@@ -1,41 +1,66 @@
+# return vs yield - return возвращает значение и завершает работу, yield возвращает, но не завершает работу, создает генератар,
+
+def print_goodbay(arg):
+    print("Goodbay", end=" ")
+
+def print_cruel(arg):
+    print("cruel", end=" ")
+
+def print_word(arg):
+    print("word", end=" ")
+
+def main():
+    print_goodbay(1)
+    print_cruel(1)
+    print_word(1)
+
+main()
+
+# def generate_list():
+#     for i in range(5):
+#         yield i # генератор (возвращает, но не заверщает)
+#
+# array = tuple(generate_list())
+
 # Области видимости
 # PI = 3.1415
 # shadows name "square" from outer scope
-square = "Дворцовая площадь"
 
-def greet(name):
-    print("Привет,", name)
-    name = "друг"
-    print("Здравствуй,", name)
-
-def square_area(lenght, width):
-    area = lenght * width
-    print(f"Площадь площади {square} = {area}")
-
-def circle_lenght(radius):
-    perimetr = 2 * PI * radius
-    print(f"Длина окружности с радиусом {radius} = {perimetr:.2f}")
-
-def print_array(array: list) -> None: # использование имени внешней переменной внутри функции крайне не рекомендуется
-    for item in array: # если array заменить на words
-        print(item)
-
-# Главная функция
-def main():
-    area = "Дворцовая площадь"
-    print(f"Площадь площади, где", area)
-    square_area(320, 240)
-    print("Ну что? Встречаемся, где", area)
-
-words = ["Привет", "мир"]
-PI = 3.14
-greet("Пётр")
-print("Давай встретимся, где", square)
-square_area(320, 240)
-print("Ну что? Встречаемся, где Дворцовая площадь")
-circle_lenght(5)
-print_array(words)
-print_array(["a", "b", "c"])
+# square = "Дворцовая площадь"
+#
+# def greet(name):
+#     print("Привет,", name)
+#     name = "друг"
+#     print("Здравствуй,", name)
+#
+# def square_area(lenght, width):
+#     area = lenght * width
+#     print(f"Площадь площади {square} = {area}")
+#
+# def circle_lenght(radius):
+#     perimetr = 2 * PI * radius
+#     print(f"Длина окружности с радиусом {radius} = {perimetr:.2f}")
+#
+# def print_array(array: list) -> None: # использование имени внешней переменной внутри функции крайне не рекомендуется
+#     for item in array: # если array заменить на words
+#         print(item)
+#
+# # Главная функция
+# def main():
+#     area = "Дворцовая площадь"
+#     print(f"Площадь площади, где", area)
+#     square_area(320, 240)
+#     print("Ну что? Встречаемся, где", area)
+#
+# words = ["Привет", "мир"]
+# PI = 3.14
+# greet("Пётр")
+# print("Давай встретимся, где", square)
+# square_area(320, 240)
+# print("Ну что? Встречаемся, где Дворцовая площадь")
+# circle_lenght(5)
+# print_array(words)
+# print_array(["a", "b", "c"])
 
 
 # a = [1, 2]
