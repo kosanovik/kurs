@@ -1,66 +1,94 @@
+# Функция как объект
+# передается в другие функции: функции высшего порядка
+
+# Функция критерия одбора элементов списка
+# Критерий: длина слова > 6
+
+def is_longer_six(word):
+    return len(word) > 6
+
+def is_ferst_letter_a(word):
+    return word[0] == "а"
+
+words = ["В", "этом", "списке", "останутся", "слова", "длина", "которых", "больше", "шесьт"]
+
+fruits = ["арбуз", "ананас", "банан", "еживика", "малина"]
+
+result = list(filter(is_longer_six, words))
+print(result)
+
+res = list(filter(is_ferst_letter_a, fruits))
+print(res)
+
+for word in filter(is_longer_six, words):
+    print(word)
+
+печатник = print
+печатник("Привет Мир")
+
 # Функция с переменным числом аргументов
-from tkinter.font import names
-
-
-def multy(first, *args):
-    # print(len(args)) # подсчет чмсла аргументов
-    # print(args) #  можем обращаться к каждому аргументу по индексу, либо перебором в цикле
-    # if len(args) == 0:
-    #     return 0
-    if not args:
-        return 0
-    result = 1
-    for arg in args:
-        result *= arg
-    return result
-
-def calc(*args, operator="+"):
-    match operator:
-        case "+":
-            result = 1
-            for i in args:
-                result *= i
-        case "*":
-            result = 1
-            for i in args:
-                result *= i
-        case _: # случай по default
-            return -float("inf")
-    return result
-
-
-def fio(name, surname):
-    return f"{name} {surname}"
-print(fio("Остап", "Бендер")) # Именованный аргумент только через обращение по имени
-print(fio(surname="Бендер", name="Остап"))
-
-def sandwich(type_of_meal, with_omion=False, with_tomato=False):
-    print("Булочка")
-    if with_omion:
-        print("лук")
-    print(type_of_meal)
-    if with_tomato:
-        print("помидоры")
-    print("Булочка")
-
-def print_any(*args, **kwargs):
-    for i in args:
-        print(i)
-    for k, v in kwargs.items():
-        print(k, "=", v)
-
-def profile(name, surname, city,*children, **additional):
-    print(f"Имя: {name}")
-    print(f"Фамилия: {surname}")
-    print(f"Из города: {city}")
-    if len(children) > 0:
-        print("Дети:", ", ".join(children))
-    if "hobbie" in additional:
-        print("Хобби:", additional["hobbie"])
-    # print("Хоби:", end=": ")
-    # print(additional)
-
-profile("Дмитрий", "Колесов", "СПб", "Мария", "просто Мария", hobbie="Филателия")
+# from tkinter.font import names
+#
+#
+# def multy(first, *args):
+#     # print(len(args)) # подсчет чмсла аргументов
+#     # print(args) #  можем обращаться к каждому аргументу по индексу, либо перебором в цикле
+#     # if len(args) == 0:
+#     #     return 0
+#     if not args:
+#         return 0
+#     result = 1
+#     for arg in args:
+#         result *= arg
+#     return result
+#
+# def calc(*args, operator="+"):
+#     match operator:
+#         case "+":
+#             result = 1
+#             for i in args:
+#                 result *= i
+#         case "*":
+#             result = 1
+#             for i in args:
+#                 result *= i
+#         case _: # случай по default
+#             return -float("inf")
+#     return result
+#
+#
+# def fio(name, surname):
+#     return f"{name} {surname}"
+# print(fio("Остап", "Бендер")) # Именованный аргумент только через обращение по имени
+# print(fio(surname="Бендер", name="Остап"))
+#
+# def sandwich(type_of_meal, with_omion=False, with_tomato=False):
+#     print("Булочка")
+#     if with_omion:
+#         print("лук")
+#     print(type_of_meal)
+#     if with_tomato:
+#         print("помидоры")
+#     print("Булочка")
+#
+# def print_any(*args, **kwargs):
+#     for i in args:
+#         print(i)
+#     for k, v in kwargs.items():
+#         print(k, "=", v)
+#
+# def profile(name, surname, city,*children, **additional):
+#     print(f"Имя: {name}")
+#     print(f"Фамилия: {surname}")
+#     print(f"Из города: {city}")
+#     if len(children) > 0:
+#         print("Дети:", ", ".join(children))
+#     if "hobbie" in additional:
+#         print("Хобби:", additional["hobbie"])
+#     # print("Хоби:", end=": ")
+#     # print(additional)
+#
+# profile("Дмитрий", "Колесов", "СПб", "Мария", "просто Мария", hobbie="Филателия")
 
 # print_any("Дмитрий", "Колесов", city="Москва", age=27)
 
