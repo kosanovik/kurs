@@ -1,4 +1,7 @@
 # Функция с переменным числом аргументов
+from tkinter.font import names
+
+
 def multy(first, *args):
     # print(len(args)) # подсчет чмсла аргументов
     # print(args) #  можем обращаться к каждому аргументу по индексу, либо перебором в цикле
@@ -39,6 +42,14 @@ def sandwich(type_of_meal, with_omion=False, with_tomato=False):
     if with_tomato:
         print("помидоры")
     print("Булочка")
+
+def print_any(*args, **kwargs):
+    for i in args:
+        print(i)
+    for k, v in kwargs.items():
+        print(k, "=", v)
+
+print_any(1,2, name="Дмитрий", age=27)
 
 sandwich("котлета", with_omion=True)
 
