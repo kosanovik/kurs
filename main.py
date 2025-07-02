@@ -1,19 +1,40 @@
+# Функция с переменным числом аргументов
+def multy(first, *args):
+    # print(len(args)) # подсчет чмсла аргументов
+    # print(args) #  можем обращаться к каждому аргументу по индексу, либо перебором в цикле
+    # if len(args) == 0:
+    #     return 0
+    if not args:
+        return 0
+    result = 1
+    for arg in args:
+        result *= arg
+    return result
+
+def fio(name, surname):
+    return f"{name} {surname}"
+print(fio("Остап", "Бендер")) # Именованный аргумент только через обращение по имени
+print(fio(surname="Бендер", name="Остап"))
+
+
+print(multy(1, 2, 3, 4)) # умножение 1*2*3*4
+print(multy(-5.4, 3.2, 4.7))
+print(multy(2, 3.2))
+
+
 # Возврат нескольких значений из функции
 # При распоковке "*" может быть только одна
-from tkinter.font import names
-
-
-def coordinates() -> tuple:
-    return 5.4, 3.2, 3.8, 7.2, 4.6
-
-x, y, *rest = coordinates() # распаковка. *rest - список каких то значений
-print(f"x = {x}, y = {y}, rest={rest}")
-
-*name, surname = "Остап Сулейман Бендер".split()
-print(name, surname)
-
-
-
+# from tkinter.font import names
+#
+#
+# def coordinates() -> tuple:
+#     return 5.4, 3.2, 3.8, 7.2, 4.6
+#
+# x, y, *rest = coordinates() # распаковка. *rest - список каких то значений
+# print(f"x = {x}, y = {y}, rest={rest}")
+#
+# *name, surname = "Остап Сулейман Бендер".split()
+# print(name, surname)
 
 # Применяем is на практике
 
