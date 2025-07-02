@@ -17,6 +17,12 @@ fruits = ["арбуз", "ананас", "банан", "еживика", "мал�
 result = list(filter(is_longer_six, words))
 print(result)
 
+def square(num):
+    return num ** 2
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9] # -> 123456789
+squares = map(square, nums)
+print(list(squares))
+
 res = list(filter(is_ferst_letter_a, fruits))
 print(res)
 
