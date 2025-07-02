@@ -10,7 +10,7 @@ x, y, *rest = coordinates() # распаковка. *rest - список как�
 print(f"x = {x}, y = {y}, rest={rest}")
 
 *name, surname = "Остап Сулейман Бендер".split()
-print(name, surnames)
+print(name, surname)
 
 
 
