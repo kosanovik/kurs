@@ -11,15 +11,41 @@ def multy(first, *args):
         result *= arg
     return result
 
+def calc(*args, operator="+"):
+    match operator:
+        case "+":
+            result = 1
+            for i in args:
+                result *= i
+        case "*":
+            result = 1
+            for i in args:
+                result *= i
+        case _: # случай по default
+            return -float("inf")
+    return result
+
+
 def fio(name, surname):
     return f"{name} {surname}"
 print(fio("Остап", "Бендер")) # Именованный аргумент только через обращение по имени
 print(fio(surname="Бендер", name="Остап"))
 
+def sandwich(type_of_meal, with_omion=False, with_tomato=False):
+    print("Булочка")
+    if with_omion:
+        print("лук")
+    print(type_of_meal)
+    if with_tomato:
+        print("помидоры")
+    print("Булочка")
+
+sandwich("котлета", with_omion=True)
 
 print(multy(1, 2, 3, 4)) # умножение 1*2*3*4
 print(multy(-5.4, 3.2, 4.7))
 print(multy(2, 3.2))
+print(calc(1, 2, 3))
 
 
 # Возврат нескольких значений из функции
