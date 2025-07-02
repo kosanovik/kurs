@@ -49,14 +49,27 @@ def print_any(*args, **kwargs):
     for k, v in kwargs.items():
         print(k, "=", v)
 
-print_any(1,2, name="Дмитрий", age=27)
+def profile(name, surname, city,*children, **additional):
+    print(f"Имя: {name}")
+    print(f"Фамилия: {surname}")
+    print(f"Из города: {city}")
+    if len(children) > 0:
+        print("Дети:", ", ".join(children))
+    if "hobbie" in additional:
+        print("Хобби:", additional["hobbie"])
+    # print("Хоби:", end=": ")
+    # print(additional)
 
-sandwich("котлета", with_omion=True)
+profile("Дмитрий", "Колесов", "СПб", "Мария", "просто Мария", hobbie="Филателия")
 
-print(multy(1, 2, 3, 4)) # умножение 1*2*3*4
-print(multy(-5.4, 3.2, 4.7))
-print(multy(2, 3.2))
-print(calc(1, 2, 3))
+# print_any("Дмитрий", "Колесов", city="Москва", age=27)
+
+# sandwich("котлета", with_omion=True)
+
+# print(multy(1, 2, 3, 4)) # умножение 1*2*3*4
+# print(multy(-5.4, 3.2, 4.7))
+# print(multy(2, 3.2))
+# print(calc(1, 2, 3))
 
 
 # Возврат нескольких значений из функции
