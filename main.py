@@ -1,18 +1,50 @@
+# Возврат нескольких значений из функции
+# При распоковке "*" может быть только одна
+from tkinter.font import names
+
+
+def coordinates() -> tuple:
+    return 5.4, 3.2, 3.8, 7.2, 4.6
+
+x, y, *rest = coordinates() # распаковка. *rest - список каких то значений
+print(f"x = {x}, y = {y}, rest={rest}")
+
+*name, surname = "Остап Сулейман Бендер".split()
+print(name, surnames)
+
+
+
+
+# Применяем is на практике
+
+# def print_array(array: list, start: int=None):
+#     if start > len(array):
+#         return
+#     if start is None:
+#         for i in array:
+#             print(i)
+#     else:
+#         for i in range(start, len(array)):
+#             print(array[i])
+#
+# a = [1, 2, 3]
+# print_array(a, 0)
+
 # Оператор is: a is b -> когда a и b - один и тот же объект
 # Словарь такде изменяем как и множество со списком
 
-my_refregirator = ["колбаса", "сыр", "масло"]
-# his_refregirator = ["колбаса", "сыр", "масло"]
-his_refregirator = my_refregirator.copy() # [:]
-# my_refregirator += ["мясо"]
-print(his_refregirator)
-print(my_refregirator is his_refregirator)
-print(my_refregirator == his_refregirator)
-print(id(my_refregirator) == id(his_refregirator))# без id Одинаково
-temp = None
-print(type(temp))
-# if temp is None:
-print(temp is None)
+# my_refregirator = ["колбаса", "сыр", "масло"]
+# # his_refregirator = ["колбаса", "сыр", "масло"]
+# his_refregirator = my_refregirator.copy() # [:]
+# # my_refregirator += ["мясо"]
+# print(his_refregirator)
+# print(my_refregirator is his_refregirator)
+# print(my_refregirator == his_refregirator)
+# print(id(my_refregirator) == id(his_refregirator))# без id Одинаково
+# temp = None
+# print(type(temp))
+# # if temp is None:
+# print(temp is None)
 
 # my_refregirator = ["колбаса", "сыр", "масло"]
 # his_refregirator = ["колбаса", "сыр", "масло"]
