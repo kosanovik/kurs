@@ -1,20 +1,51 @@
+# Оператор is: a is b -> когда a и b - один и тот же объект
+# Словарь такде изменяем как и множество со списком
+
+my_refregirator = ["колбаса", "сыр", "масло"]
+# his_refregirator = ["колбаса", "сыр", "масло"]
+his_refregirator = my_refregirator.copy() # [:]
+# my_refregirator += ["мясо"]
+print(his_refregirator)
+print(my_refregirator is his_refregirator)
+print(my_refregirator == his_refregirator)
+print(id(my_refregirator) == id(his_refregirator))# без id Одинаково
+temp = None
+print(type(temp))
+# if temp is None:
+print(temp is None)
+
+# my_refregirator = ["колбаса", "сыр", "масло"]
+# his_refregirator = ["колбаса", "сыр", "масло"]
+# print(id(my_refregirator) == id(his_refregirator)) # без id Одинаково
+
+# d = {"a": 1}
+# print(id(d))
+# d["a"] += 1
+# print(id(d))
+
+# a = [0]
+# print(id(a))
+# a[0] += 1
+# print(id(a))
+
+
 # return vs yield - return возвращает значение и завершает работу, yield возвращает, но не завершает работу, создает генератар,
 
-def print_goodbay(arg):
-    print("Goodbay", end=" ")
-
-def print_cruel(arg):
-    print("cruel", end=" ")
-
-def print_word(arg):
-    print("word", end=" ")
-
-def main():
-    print_goodbay(1)
-    print_cruel(1)
-    print_word(1)
-
-main()
+# def print_goodbay(arg):
+#     print("Goodbay", end=" ")
+#
+# def print_cruel(arg):
+#     print("cruel", end=" ")
+#
+# def print_word(arg):
+#     print("word", end=" ")
+#
+# def main():
+#     print_goodbay(1)
+#     print_cruel(1)
+#     print_word(1)
+#
+# main()
 
 # def generate_list():
 #     for i in range(5):
