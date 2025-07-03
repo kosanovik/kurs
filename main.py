@@ -2,18 +2,29 @@
 # lambda-функции
 # lambda <аргументы>: <выражение>
 # словарные аргументы
-# проверка коллекций: any(), all()
+# потоковый ввод sys.stdin (Ctrl + D)
+
+
+import sys
+# for line in sys.stdin:
+#     print(line)
+
+data = sys.stdin.readline()
+
+data = [d.strip("\n") for d in data]
+
+print(data)
 
 # any - любой элемент коллекции вернул True
 # all - все элементы коллекции вернули True
 
-print(all([1, 2, 3])) # все элементы нулевые
-print(all([1, 2, 0])) # один элемент нулевой
-print(all([1]))
-
-words = "один два три".split() # > 3
-list_for_analize = list(map(lambda x: len(x) > 2, words))
-print(all(list_for_analize))
+# print(all([1, 2, 3])) # все элементы нулевые
+# print(all([1, 2, 0])) # один элемент нулевой
+# print(all([1]))
+#
+# words = "один два три".split() # > 3
+# list_for_analize = list(map(lambda x: len(x) > 2, words))
+# print(all(list_for_analize))
 
 
 # fruits = ["арбуз", "ананас", "банан", "еживика", "арбуз", "малина"]
