@@ -1,21 +1,37 @@
+# Рекурсия - функция вызывает сама себя
+# def factorial(count): # 5! = 1 * 2 * 3 * 4 * 5 new*
+#     result = 1
+#     for i in range(2, count + 1):
+#         result *= i
+#     return result
+
+def factorial(x):
+    if x == 1 or x == 0:
+        return 1
+    return x * factorial(x - 1)
+
+for x in range(10):
+    print(x, factorial(x))
+
+
 # Анонимные функции (однострочники, безымянные)
 # lambda-функции
 # lambda <аргументы>: <выражение>
 # словарные аргументы
 # потоковый ввод sys.stdin (Ctrl + D)
 
-import sys
-
-data = [d.strip('\n') for d in sys.stdin.readlines()]
-
-temp =[] # индекс строки в data и число слов в виде кортежей
-for i, s in enumerate(data):
-    temp.append((i, len(s.split())))
-print(temp)
-temp.sort(key=lambda x:x[1])
-index = temp[0][0]
-res = sorted(data[index].split())
-print(*res, sep="-")
+# import sys
+#
+# data = [d.strip('\n') for d in sys.stdin.readlines()]
+#
+# temp =[] # индекс строки в data и число слов в виде кортежей
+# for i, s in enumerate(data):
+#     temp.append((i, len(s.split())))
+# print(temp)
+# temp.sort(key=lambda x:x[1])
+# index = temp[0][0]
+# res = sorted(data[index].split())
+# print(*res, sep="-")
 
 # import sys
 # # for line in sys.stdin:
