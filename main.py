@@ -2,6 +2,30 @@
 # lambda-функции
 # lambda <аргументы>: <выражение>
 
+ENGLISH_ABC = set([chr(ch) for ch in range(ord("a"), ord("z") + 1)])
+RUSSIAN_ABC = set([chr(ch) for ch in range(ord("а"), ord("я") + 1)] + ["ё"])
+# print(ENGLISH_ABC)
+# print(RUSSIAN_ABC)
+ABC = ENGLISH_ABC ^ RUSSIAN_ABC ^ set(map(str.upper, ENGLISH_ABC))
+ABC = ENGLISH_ABC ^ RUSSIAN_ABC ^ set([x.upper() for x in ENGLISH_ABC]) ^ set([x.upper() for x in RUSSIAN_ABC])
+print(ABC)
+
+txt = "Привет, пока и всex.".lower()
+
+def remove_punctuation(text):
+    return ''.join(filter(lambda x: x in ABC ^ {' '}, text))
+
+
+def get_words(text: str) -> list:
+    return remove_punctuation(text).split()
+
+
+def long_words(text, length=4) -> filter:
+    return filter(lambda word: len(word) >= length, get_words(text))
+
+
+print(list(long_words(txt)))
+
 # Функция как объект
 # передается в другие функции: функции высшего порядка
 
@@ -10,53 +34,53 @@
 
 # def is_longer_six(word):
 #     return len(word) > 6
-is_longer_six = lambda word: len(word) > 6
-
-# def is_ferst_letter_a(word):
-#     return word[0] == "а"
-is_ferst_letter_a = lambda word: word[0] == "а"
+# is_longer_six = lambda word: len(word) > 6
+#
+#  def is_ferst_letter_a(word):
+#      return word[0] == "а"
+# is_ferst_letter_a = lambda word: word[0] == "а"
 
 # Критерий - вхождение подстроки
 # в астности "ан"
 # def string_contains(s): # HW
 #     return "ан" is s
-string_contains = lambda s: "ан" is s
-
-words = ["В", "этом", "списке", "останутся", "слова", "длина", "которых", "больше", "шесьт"]
-
-fruits = ["арбуз", "ананас", "банан", "еживика", "малина"]
-
-result = list(filter(lambda word: len(word) > 6, words))
-print(result)
-
-def square(num):
-    return num ** 2
-nums = [1, 2, 3, 4, 5, 6, 7, 8, 9] # -> 123456789
-# nums_str = map(str, nums)
-res = "".join(map(str, nums))
-# res = "".join(nums_str)
-print(res)
-
-squares = map(square, nums)
-print(list(squares))
-
-res = list(filter(lambda x: x[0] == "а", fruits))
-print(res)
-
-res = list(filter(lambda s: "ан" in s, fruits))
-print(res)
-
-for word in filter(is_longer_six, words):
-    print(word)
+# string_contains = lambda s: "ан" is s
+#
+# words = ["В", "этом", "списке", "останутся", "слова", "длина", "которых", "больше", "шесьт"]
+#
+# fruits = ["арбуз", "ананас", "банан", "еживика", "малина"]
+#
+# result = list(filter(lambda word: len(word) > 6, words))
+# print(result)
+#
+# def square(num):
+#     return num ** 2
+# nums = [1, 2, 3, 4, 5, 6, 7, 8, 9] # -> 123456789
+# # nums_str = map(str, nums)
+# res = "".join(map(str, nums))
+# # res = "".join(nums_str)
+# print(res)
+#
+# squares = map(square, nums)
+# print(list(squares))
+#
+# res = list(filter(lambda x: x[0] == "а", fruits))
+# print(res)
+#
+# res = list(filter(lambda s: "ан" in s, fruits))
+# print(res)
+#
+# for word in filter(is_longer_six, words):
+#     print(word)
 
 # в одну строку вывести список квадратных чисел от 3 до 15
 # [9, 16,25...]
 # res = list(map(lambda y: y ** 2, range(3, 16)))
-res = [y ** 2 for y in range(3, 16)]
-print(res)
-
-long_words = [word for word in words if len(word) > 6]
-print(long_words)
+# res = [y ** 2 for y in range(3, 16)]
+# print(res)
+#
+# long_words = [word for word in words if len(word) > 6]
+# print(long_words)
 
 
 # печатник = print
