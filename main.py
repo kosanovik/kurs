@@ -3,22 +3,22 @@
 # lambda <аргументы>: <выражение>
 # словарные аргументы
 
-numbers = [1, 2, 3, 4, 5] # list(range(1, 6))
-squares = {n: n ** 2 for n in numbers}
-print(squares)
-
-numbers = range(1, 11)
-squares = {n: n ** 2 for n in numbers if n % 2 == 0}
-print(squares)
-
-source_dict = {
-    "x": 1,
-    "y": 2,
-    "z": 3,
-}
-
-dest_dict = {k: v * 2 for k, v in source_dict.items()}
-print(dest_dict)
+# numbers = [1, 2, 3, 4, 5] # list(range(1, 6))
+# squares = {n: n ** 2 for n in numbers}
+# print(squares)
+#
+# numbers = range(1, 11)
+# squares = {n: n ** 2 for n in numbers if n % 2 == 0}
+# print(squares)
+#
+# source_dict = {
+#     "x": 1,
+#     "y": 2,
+#     "z": 3,
+# }
+#
+# dest_dict = {k: v * 2 for k, v in source_dict.items()}
+# print(dest_dict)
 
 
 ENGLISH_ABC = set([chr(ch) for ch in range(ord("a"), ord("z") + 1)])
@@ -29,7 +29,9 @@ RUSSIAN_ABC = set([chr(ch) for ch in range(ord("а"), ord("я") + 1)] + ["ё"])
 ABC = ENGLISH_ABC ^ RUSSIAN_ABC ^ set([x.upper() for x in ENGLISH_ABC]) ^ set([x.upper() for x in RUSSIAN_ABC])
 print(ABC)
 
-txt = "Привет, пока и всex.".lower()
+txt = "Я знаю, что я ничего не знаю. Но другие не знают и этого. А значит, я знаю больше, чем они."
+d = {}
+
 
 def remove_punctuation(text):
     return ''.join(filter(lambda x: x in ABC ^ {' '}, text))
@@ -42,8 +44,21 @@ def get_words(text: str) -> list:
 def long_words(text, length=4) -> filter:
     return filter(lambda word: len(word) >= length, get_words(text))
 
+words = get_words(txt)
 
-print(list(long_words(txt)))
+# Считаем частоту слов
+for word in words:
+    if word in d:
+        d[word] += 1
+    else:
+        d[word] = 1
+
+res = {k: v for k, v in sorted(d.items(), key=lambda item: item[1])}
+
+for k, v in res.items():
+    print(k, v)
+
+# print(list(long_words(txt)))
 
 # Функция как объект
 # передается в другие функции: функции высшего порядка
