@@ -1,3 +1,52 @@
+# Черепашья графика
+
+import turtle as t # псевдоним
+
+N = 50
+t.speed(0)
+colors = ["red", "purple", "blue", 'green', "yellow", "orange"]
+
+t.bgcolor("black")
+angle = 360 // len(colors) - 1
+
+for x in range(200):
+    t.pencolor(colors[x % len(colors)]) # цвет для каждого витка свой
+    t.width(x // 100 + 1)
+    t.forward(x)
+    t.left(angle)
+
+# t.penup()
+# t.goto(100, 200)
+# t.pendown()
+
+# for _ in range(N):
+#     t.forward(100)
+#     t.right(360 // N)
+
+# for _ in range(N):
+#     t.circle(60)
+#     t.right(360 // N)
+
+def square(side):
+    for _ in range(4):
+        t.forward(100)
+        t.right(90)
+
+
+def flower():
+    for _ in range(36):
+        t.circle(50)
+        t.right(10)
+
+# for _ in range(N):
+#     square(100)
+#     t.right(360 // 5)
+
+# flower()
+
+
+t.mainloop()
+
 # Рекурсия - функция вызывает сама себя
 # def factorial(count): # 5! = 1 * 2 * 3 * 4 * 5 new*
 #     result = 1
@@ -5,13 +54,13 @@
 #         result *= i
 #     return result
 
-def factorial(x):
-    if x == 1 or x == 0:
-        return 1
-    return x * factorial(x - 1)
-
-for x in range(10):
-    print(x, factorial(x))
+# def factorial(x):
+#     if x == 1 or x == 0:
+#         return 1
+#     return x * factorial(x - 1)
+#
+# for x in range(10):
+#     print(x, factorial(x))
 
 
 # Анонимные функции (однострочники, безымянные)
