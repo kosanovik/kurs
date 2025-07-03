@@ -4,16 +4,25 @@
 # словарные аргументы
 # потоковый ввод sys.stdin (Ctrl + D)
 
-
 import sys
-# for line in sys.stdin:
-#     print(line)
 
-data = sys.stdin.readline()
+data = [d.strip('\n') for d in sys.stdin.readlines()]
 
-data = [d.strip("\n") for d in data]
+temp =[] # индекс строки в data и число слов в виде кортежей
+for i, s in enumerate(data):
+    temp.append((i, len(s.split())))
+print(temp)
+temp.sort(key=lambda x:x[1])
+index = temp[0][0]
+res = sorted(data[index].split())
+print(*res, sep="-")
 
-print(data)
+# import sys
+# # for line in sys.stdin:
+# # print(line)
+# data = sys.stdin.readlines()
+# data = [d.strip("\n") for d in data]
+# print(data)  - тоже самое что ниже
 
 # any - любой элемент коллекции вернул True
 # all - все элементы коллекции вернули True
@@ -57,13 +66,13 @@ print(data)
 # print(dest_dict)
 
 
-ENGLISH_ABC = set([chr(ch) for ch in range(ord("a"), ord("z") + 1)])
-RUSSIAN_ABC = set([chr(ch) for ch in range(ord("а"), ord("я") + 1)] + ["ё"])
-# print(ENGLISH_ABC)
-# print(RUSSIAN_ABC)
-# ABC = ENGLISH_ABC ^ RUSSIAN_ABC ^ set(map(str.upper, ENGLISH_ABC))
-ABC = ENGLISH_ABC ^ RUSSIAN_ABC ^ set([x.upper() for x in ENGLISH_ABC]) ^ set([x.upper() for x in RUSSIAN_ABC])
-print(ABC)
+# ENGLISH_ABC = set([chr(ch) for ch in range(ord("a"), ord("z") + 1)])
+# RUSSIAN_ABC = set([chr(ch) for ch in range(ord("а"), ord("я") + 1)] + ["ё"])
+# # print(ENGLISH_ABC)
+# # print(RUSSIAN_ABC)
+# # ABC = ENGLISH_ABC ^ RUSSIAN_ABC ^ set(map(str.upper, ENGLISH_ABC))
+# ABC = ENGLISH_ABC ^ RUSSIAN_ABC ^ set([x.upper() for x in ENGLISH_ABC]) ^ set([x.upper() for x in RUSSIAN_ABC])
+# print(ABC)
 
 # txt = "Я знаю, что я ничего не знаю. Но другие не знают и этого. А значит, я знаю больше, чем они."
 # d = {}
