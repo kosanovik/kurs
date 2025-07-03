@@ -1,36 +1,59 @@
+# Анонимные функции (однострочники, безымянные)
+# lambda-функции
+# lambda <аргументы>: <выражение>
+
 # Функция как объект
 # передается в другие функции: функции высшего порядка
 
 # Функция критерия одбора элементов списка
 # Критерий: длина слова > 6
 
-def is_longer_six(word):
-    return len(word) > 6
+# def is_longer_six(word):
+#     return len(word) > 6
+is_longer_six = lambda word: len(word) > 6
 
-def is_ferst_letter_a(word):
-    return word[0] == "а"
+# def is_ferst_letter_a(word):
+#     return word[0] == "а"
+is_ferst_letter_a = lambda word: word[0] == "а"
+
+# Критерий - вхождение подстроки
+# в астности "ан"
+# def string_contains(s): # HW
+#     return "ан" is s
+string_contains = lambda s: "ан" is s
 
 words = ["В", "этом", "списке", "останутся", "слова", "длина", "которых", "больше", "шесьт"]
 
 fruits = ["арбуз", "ананас", "банан", "еживика", "малина"]
 
-result = list(filter(is_longer_six, words))
+result = list(filter(lambda word: len(word) > 6, words))
 print(result)
 
 def square(num):
     return num ** 2
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9] # -> 123456789
+# nums_str = map(str, nums)
+res = "".join(map(str, nums))
+# res = "".join(nums_str)
+print(res)
+
 squares = map(square, nums)
 print(list(squares))
 
-res = list(filter(is_ferst_letter_a, fruits))
+res = list(filter(lambda x: x[0] == "а", fruits))
+print(res)
+
+res = list(filter(lambda s: "ан" in s, fruits))
 print(res)
 
 for word in filter(is_longer_six, words):
     print(word)
 
-печатник = print
-печатник("Привет Мир")
+# в одну строку вывести список квадратных чисел от 3 до 15
+# [9, 16,25...]
+
+# печатник = print
+# печатник("Привет Мир")
 
 # Функция с переменным числом аргументов
 # from tkinter.font import names
