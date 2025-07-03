@@ -51,6 +51,13 @@ for word in filter(is_longer_six, words):
 
 # в одну строку вывести список квадратных чисел от 3 до 15
 # [9, 16,25...]
+# res = list(map(lambda y: y ** 2, range(3, 16)))
+res = [y ** 2 for y in range(3, 16)]
+print(res)
+
+long_words = [word for word in words if len(word) > 6]
+print(long_words)
+
 
 # печатник = print
 # печатник("Привет Мир")
