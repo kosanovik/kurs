@@ -6,14 +6,14 @@ N = 50
 t.speed(0)
 colors = ["red", "purple", "blue", 'green', "yellow", "orange"]
 
-t.bgcolor("black")
-angle = 360 // len(colors) - 1
-
-for x in range(200):
-    t.pencolor(colors[x % len(colors)]) # цвет для каждого витка свой
-    t.width(x // 100 + 1)
-    t.forward(x)
-    t.left(angle)
+# t.bgcolor("black")
+# angle = 360 // len(colors) - 1
+#
+# for x in range(200):
+#     t.pencolor(colors[x % len(colors)]) # цвет для каждого витка свой
+#     t.width(x // 100 + 1)
+#     t.forward(x)
+#     t.left(angle)
 
 # t.penup()
 # t.goto(100, 200)
@@ -37,6 +37,21 @@ def flower():
     for _ in range(36):
         t.circle(50)
         t.right(10)
+
+def tree(lenght): # рекурсивное дереао
+    if lenght < 10:
+        return
+    t.forward(lenght)
+    t.left(30)
+    tree(lenght * 0.7)
+    t.right(60)
+    tree(lenght * 0.7)
+    t.left(30)
+    t.backward(lenght)
+
+t.left(90)
+tree(100)
+
 
 # for _ in range(N):
 #     square(100)
