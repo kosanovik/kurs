@@ -1,13 +1,26 @@
 # Встроенные функции
+# PyPI - Pyton Package Index (pupi.org)
 
+import math as m
+# print("Число Пи:", m.pi)
 
+from math import *
+# from math import pi
+# from math import sqrt
+print("Число Пи:", pi)
+print("Капдратный корень 4:", sqrt(4))
+print("Синус 30:", round(sin(radians(30)), 2))
+print("Гипотинуза для 3 и 2: ", hypot(3, 2))
 
-lst = [1, 1, 2, 3, 5]
-res = sum([1, 2, 3])
-print(res)
-min_value = min(lst)
-max_value = max(lst)
-print(res, min_value, max_value)
+# print(dir(m))
+# print(help(m.cos))
+
+# lst = [1, 1, 2, 3, 5]
+# res = sum([1, 2, 3])
+# print(res)
+# min_value = min(lst)
+# max_value = max(lst)
+# print(res, min_value, max_value)
 
 
 
@@ -37,11 +50,11 @@ from operator import length_hint
 
 
 
-import turtle as t # псевдоним
-
-N = 50
-t.speed(0)
-colors = ["red", "purple", "blue", 'green', "yellow", "orange"]
+# import turtle as t # псевдоним
+#
+# N = 50
+# t.speed(0)
+# colors = ["red", "purple", "blue", 'green', "yellow", "orange"]
 
 # t.bgcolor("black")
 # angle = 360 // len(colors) - 1
@@ -64,30 +77,30 @@ colors = ["red", "purple", "blue", 'green', "yellow", "orange"]
 #     t.circle(60)
 #     t.right(360 // N)
 
-def square(side):
-    for _ in range(4):
-        t.forward(100)
-        t.right(90)
-
-
-def flower():
-    for _ in range(36):
-        t.circle(50)
-        t.right(10)
-
-def tree(lenght): # рекурсивное дереао
-    if lenght < 10:
-        return
-    t.forward(lenght)
-    t.left(30)
-    tree(lenght * 0.7)
-    t.right(60)
-    tree(lenght * 0.7)
-    t.left(30)
-    t.backward(lenght)
-
-t.left(90)
-tree(100)
+# def square(side):
+#     for _ in range(4):
+#         t.forward(100)
+#         t.right(90)
+#
+#
+# def flower():
+#     for _ in range(36):
+#         t.circle(50)
+#         t.right(10)
+#
+# def tree(lenght): # рекурсивное дереао
+#     if lenght < 10:
+#         return
+#     t.forward(lenght)
+#     t.left(30)
+#     tree(lenght * 0.7)
+#     t.right(60)
+#     tree(lenght * 0.7)
+#     t.left(30)
+#     t.backward(lenght)
+#
+# t.left(90)
+# tree(100)
 
 
 
@@ -98,7 +111,7 @@ tree(100)
 # flower()
 
 
-t.mainloop()
+# t.mainloop()
 
 # Рекурсия - функция вызывает сама себя
 # def factorial(count): # 5! = 1 * 2 * 3 * 4 * 5 new*
