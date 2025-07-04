@@ -2,27 +2,76 @@
 # PyPI - Pyton Package Index (pupi.org)
 
 import random as r
+r.seed(5) # отправная точка
+print(r.random())
 
-d = {
-    "a": 1,
-    "b": 2,
-    "c": 3,
-}
+# import random as r
+#
+# N = 8
+#
+# abc = "qweqlkdsfgdgdfgdfgdslkfg"
+# num = '1234567890'
+# spec = "#$@&"
+#
+#
+# abc = list(abc)
+# num = list(num)
+# spec = list (spec)
+#
+# r.shuffle(abc)
+#
+# temp = abc[:N - 3]
+# temp.append(r.choice(abc).upper())
+# temp.append(r.choice(num))
+# temp.append(r.choice(spec))
+# r.shuffle(temp)
+# res = "".join(temp)
+#
+# print(res)
 
-keys = list(d.keys())
-key = r.choice(keys)
-print(d[key])
+# abc = "qweqlkdsfgdgdfgdfgdslkfg"
+#
+# lst = list(abc) + ["1", "2"] + ["#", "$"]
+# r.shuffle(lst)
+# res = "".join(lst[:8])
+#
+# print(res)
 
+# lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+# res = r.sample(lst, k=5)
+# print(res)
 
-import random as r
+# lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+# for _ in range(10):
+#     print(r.sample(lst, k=5))
 
-lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-res = r.choice(lst)
-print(res)
-
-print(r.choice(['Орёл', "Решка"]))
-print(r.choice('Орёл'))
+# zara = ["\u2680", "\u2681", "\u2682", "\u2683", "\u2684","\u2685"]
+#
+# for _ in range(10):
+#     print(r.choice(zara), r.choice(zara))
+#
+# import random as r
+#
+# d = {
+#     "a": 1,
+#     "b": 2,
+#     "c": 3,
+# }
+#
+# keys = list(d.keys())
+# key = r.choice(keys)
+# print(d[key])
+#
+#
+# import random as r
+#
+# lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+#
+# res = r.choice(lst)
+# print(res)
+#
+# print(r.choice(['Орёл', "Решка"]))
+# print(r.choice('Орёл'))
 
 # for _ in range(10):
 #     # print(r.randint(0, 10))
