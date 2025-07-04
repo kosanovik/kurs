@@ -1,16 +1,43 @@
 # Встроенные функции
 # PyPI - Pyton Package Index (pupi.org)
 
-import math as m
+import random as r
+
+d = {
+    "a": 1,
+    "b": 2,
+    "c": 3,
+}
+
+keys = list(d.keys())
+key = r.choice(keys)
+print(d[key])
+
+
+import random as r
+
+lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+res = r.choice(lst)
+print(res)
+
+print(r.choice(['Орёл', "Решка"]))
+print(r.choice('Орёл'))
+
+# for _ in range(10):
+#     # print(r.randint(0, 10))
+#     print(r.randrange(0, 10, 2))
+
+# import math as m
 # print("Число Пи:", m.pi)
 
-from math import *
-# from math import pi
-# from math import sqrt
-print("Число Пи:", pi)
-print("Капдратный корень 4:", sqrt(4))
-print("Синус 30:", round(sin(radians(30)), 2))
-print("Гипотинуза для 3 и 2: ", hypot(3, 2))
+# from math import *
+# # from math import pi
+# # from math import sqrt
+# print("Число Пи:", pi)
+# print("Капдратный корень 4:", sqrt(4))
+# print("Синус 30:", round(sin(radians(30)), 2))
+# print("Гипотинуза для 3 и 2: ", hypot(3, 2))
 
 # print(dir(m))
 # print(help(m.cos))
