@@ -3,6 +3,17 @@
 
 import datetime as dt
 
+my_time = dt.time(12, 26,33)
+print(my_time)
+my_day = dt.date(2025, 7,4)
+print(my_day)
+my_day_time = dt.datetime.combine(my_day, my_time)
+print(my_day_time)
+
+date1 = dt.date(2025, 6,15)
+date2 = dt.date(2025, 7,3)
+delta = date2 - date1
+print(delta)
 
 
 # print(dt.datetime.now())
