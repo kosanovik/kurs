@@ -6,25 +6,44 @@
 # # RGB (0...255, 0...255, 0...255)
 # # thumbnail
 
-from PIL import Image # Image - главный составной компонет библиотеки
+from PIL import Image, ImageDraw # Image - главный составной компонет библиотеки
+
+# RED = (255, 0, 0)
+POLY = [(50, 50), (150, 50), (180, 120)]
+
+image = Image.new("RGB",
+                  (600, 400),
+                  (0, 0, 255))
+
+draw = ImageDraw.Draw(image)
+
+draw.line((0, 0, 600, 400), fill=(255, 0, 0), width=5)
+draw.line((600, 0, 0, 400), fill=(255, 0, 0), width=5)
+draw.rectangle((10, 10, 590, 390), outline=(255, 0, 0), width=10)
+draw.ellipse((10, 10, 590, 390), outline=(255, 0, 0), width=10)
+draw.polygon(POLY, outline="green", width=15)
+
+draw.text((100, 100), "Текст", fill=(255, 0, 0)) # как увеличить текст ДЗ + голубое небо 600х400 + текст солнечный день
 
 
-image = Image.open('images/python.jpg')
+image.save("images/blue_1.jpg")
 
-
-x, y = image.size
-mode = image.mode
-pixels = image.load() # загрузить таблицу пикселей
-
-print(f"Ширина = {x}, высота = {y}")
-print(f"Цветовая схема: {mode}")
+# image = Image.open('images/python.jpg')
+#
+#
+# x, y = image.size
+# mode = image.mode
+# pixels = image.load() # загрузить таблицу пикселей
+#
+# print(f"Ширина = {x}, высота = {y}")
+# print(f"Цветовая схема: {mode}")
 
 
 # image_rotate = image.rotate(0) # поворот
 # image_flipe = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
 # cropped = image.crop((250, 0, 550, 300)) # функция обрезания
 
-resized = image.resize((350, 300))
+# resized = image.resize((350, 300))
 
 # # Gryscale
 # for i in range(x):
@@ -45,7 +64,7 @@ resized = image.resize((350, 300))
 #         r, g, b = pixels[i, j]
 #         pixels[i, j] = g, b, r
 
-resized.save("images/python2.jpg")
+# resized.save("images/python2.jpg")
 
 # from pprint import pprint
 #
