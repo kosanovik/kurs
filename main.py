@@ -1,15 +1,61 @@
-# Встроенные функции
-# PyPI - Pyton Package Index (pupi.org)
+# Внешние библиотеки
+# Графика
+# PIL - Python Imagine Library. python3 -m pip install --upgrade pip - обновление установщика - обработка растровых изображений
+# pip freeze > requiremets.txt - создание файла зависимости
+# pip install -r requiremets.txt - установка списка библиотек
+# # RGB (0...255, 0...255, 0...255)
+# # thumbnail
 
-from pprint import pprint
+from PIL import Image # Image - главный составной компонет библиотеки
 
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
 
-pprint(matrix)
+image = Image.open('images/python.jpg')
+
+
+x, y = image.size
+mode = image.mode
+pixels = image.load() # загрузить таблицу пикселей
+
+print(f"Ширина = {x}, высота = {y}")
+print(f"Цветовая схема: {mode}")
+
+
+# image_rotate = image.rotate(0) # поворот
+# image_flipe = image.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+# cropped = image.crop((250, 0, 550, 300)) # функция обрезания
+
+resized = image.resize((350, 300))
+
+# # Gryscale
+# for i in range(x):
+#     for j in range(y):
+#         r, g, b = pixels[i, j]
+#         average = (r+g+b // 3)
+#         pixels[i, j] = average, average, average
+
+# # Негатив
+# for i in range(x):
+#     for j in range(y):
+#         r, g, b = pixels[i, j]
+#         pixels[i, j] = 255 - r, 255 - g, 255 - b
+
+# # Инверсия
+# for i in range(x):
+#     for j in range(y):
+#         r, g, b = pixels[i, j]
+#         pixels[i, j] = g, b, r
+
+resized.save("images/python2.jpg")
+
+# from pprint import pprint
+#
+# matrix = [
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9]
+# ]
+#
+# pprint(matrix)
 
 # import datetime as dt
 #
