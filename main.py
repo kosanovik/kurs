@@ -1,9 +1,29 @@
 # Встроенные функции
 # PyPI - Pyton Package Index (pupi.org)
 
-import random as r
-r.seed(5) # отправная точка
-print(r.random())
+import datetime as dt
+
+
+
+# print(dt.datetime.now())
+# print(dt.datetime.now().date())
+# print(dt.datetime.now().time())
+#
+# print(type(dt.datetime.now().time()))
+
+time = dt.datetime.now() # сырое время
+
+ftime = time.strftime("%d/%m/%y")
+ftime1 = time.strftime("%H:%M")
+
+print("Сегодня", ftime)
+print("Время", ftime1)
+
+
+
+# import random as r
+# r.seed(5) # отправная точка
+# print(r.random())
 
 # import random as r
 #
