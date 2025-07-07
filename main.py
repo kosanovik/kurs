@@ -5,18 +5,20 @@
 # w - write (запись, если файл не существует, то он создается, если был, то в нем все стирается)
 # a - append (запись в конец - дозапись)
 # r - read (чтение (по умолчанию))
+# print(*args, sep=' ', end='\n', file=None, flush=False)
 from itertools import count
 
-fo = open("info.txt", "rt", encoding="utf-8")
+fo = open("info.txt", "at", encoding="utf-8")
 
+# fo.write(" Хороший текст.") # будет добавляться столько раз сколько будет запускаться
 
+print("\nA вот еще одна строка.", file=fo)
 
-text = fo.read(11)
-fo.read(6)
-text += fo.read(8)
-print("Вот, что было в файле", end=": ")
-print(text)
-
+# text = fo.read(11)
+# fo.read(6)
+# text += fo.read(8)
+# print("Вот, что было в файле", end=": ")
+# print(text)
 fo.close()
 
 # fo = open("info.txt", "wt", encoding="utf-8")
