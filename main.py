@@ -4,19 +4,31 @@
 # b - бинарные файлы (jpg, avi, mp3)
 # w - write (запись, если файл не существует, то он создается, если был, то в нем все стирается)
 # a - append (запись в конец - дозапись)
-# r - read (чтение)
+# r - read (чтение (по умолчанию))
 from itertools import count
 
-fo = open("info.txt", "wt", encoding="utf-8")
+fo = open("info.txt", "rt", encoding="utf-8")
 
-print(fo.mode)
-print(fo.name)
-print(fo.encoding)
 
-count = fo.write("Этот текс будет в файле!")
-print("В файл записано", count, ",байт!")
+
+text = fo.read(11)
+fo.read(6)
+text += fo.read(8)
+print("Вот, что было в файле", end=": ")
+print(text)
 
 fo.close()
+
+# fo = open("info.txt", "wt", encoding="utf-8")
+#
+# print(fo.mode)
+# print(fo.name)
+# print(fo.encoding)
+#
+# count = fo.write("Этот текс будет в файле!")
+# print("В файл записано", count, ",байт!")
+#
+# fo.close()
 
 
 
