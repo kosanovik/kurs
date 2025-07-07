@@ -1,4 +1,5 @@
 # Файлы - набор данных, сохраненный на определенном носителе в виде определенной структуры (имя+расширение)
+# Файлы и ОС
 # name.txt
 # t - текстовый файл
 # b - бинарные файлы (jpg, avi, mp3)
@@ -8,11 +9,27 @@
 # print(*args, sep=' ', end='\n', file=None, flush=False)
 # from itertools import count
 
-# Откытие с менеджером контекста
-with open("info.txt", "rt", encoding="utf-8") as fo:
-    text = fo.read()
-    lst = text.splitlines()
-    print(lst)
+import os
+
+path = os.getcwd() # get current working directory
+print(path)
+
+os.chdir("..") # на уровень выше
+os.chdir(path + "/images")
+print(os.getcwd())
+
+
+# "Мягкое" создание директории (вместо mkdirs)
+# os.makedirs("libs", exist_ok=True)
+# print(os.path.exists("libs")): # проверка существования пути
+#     os.rmdir("libs")
+# os.rmdir("libs")
+
+# Откhытие с менеджером контекста
+# with open("info.txt", "rt", encoding="utf-8") as fo:
+#     text = fo.read()
+#     lst = text.splitlines()
+#     print(lst)
 # Проследит, чтобы тест закрылся
 
 # Построчное чтение №1
@@ -37,7 +54,7 @@ with open("info.txt", "rt", encoding="utf-8") as fo:
 # text += fo.read(8)
 # print("Вот, что было в файле", end=": ")
 # print(text)
-fo.close()
+# fo.close()
 
 # fo = open("info.txt", "wt", encoding="utf-8")
 #
