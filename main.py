@@ -8,7 +8,12 @@
 # print(*args, sep=' ', end='\n', file=None, flush=False)
 # from itertools import count
 
-fo = open("info.txt", "at", encoding="utf-8")
+# Откытие с менеджером контекста
+with open("info.txt", "rt", encoding="utf-8") as fo:
+    text = fo.read()
+    lst = text.splitlines()
+    print(lst)
+# Проследит, чтобы тест закрылся
 
 # Построчное чтение №1
 # while text := fo.readline():
@@ -17,10 +22,10 @@ fo = open("info.txt", "at", encoding="utf-8")
 # lst = fo.readlines()
 # lst = map(lambda x: x.strip("\n"), lst)
 # Построчное чтение №3
-text = fo.read()
-lst = text.splitlines()
+# text = fo.read()
+# lst = text.splitlines()
 
-print(lst)
+# print(lst)
 # fo = open("info.txt", "at", encoding="utf-8")
 
 # fo.write(" Хороший текст.") # будет добавляться столько раз сколько будет запускаться
