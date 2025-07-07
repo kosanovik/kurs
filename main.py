@@ -1,24 +1,72 @@
 # Внешние библиотеки
 # Документы документы по шаблону (tempalte.docx)
+# Excel (openpyxl)
 # Word - DOCX (python-docx-template / docxtpl)
 # pip freeze > requiremets.txt - создание файла зависимости
 # pip install -r requiremets.txt - установка списка библиотек
 
-from docxtpl import DocxTemplate
+# Запись данных в существующий файл
+from openpyxl import load_workbook
+# Открываем (загружаем) рабочую книгу
+wb = load_workbook("docs/report.xlsx")
 
-# Загрузка шаблона
-doc = DocxTemplate("Docs/template.docx")
+# Активный лист
+ws = wb.active
+# Можно и по имени обратиться
+# ws = wb["Отчёт"]
 
-# Данные для подстановки в шаблон
-content = {
-    "company": "ООО Монолит",
-    "employee": "Петров Д.И.",
-    "position": "Менеджер",
-    "date": "01/01/2025"
-}
+# Заголовки
+ws["A1"] = "ФИО"
+ws["B1"] = "Должность"
+ws["C1"] = "Отдел"
 
-doc.render(content)
-doc.save("docs/about.docx")
+# Данные
+employees = [
+    ["Иванов И.И.", "Менеджер", "Продажи"],
+    ["Петров И.И.", "Бухгалтер", "Финансы"],
+    ["Сидоров И.И.", "Аналитик", "IT"]
+]
+
+for row, data in enumerate(employees, start=2):
+    ws.cell(row=row, column=1, value=data[0])
+    ws.cell(row=row, column=2, value=data[1])
+    ws.cell(row=row, column=3, value=data[2])
+
+wb.save("Docs/employees.xlsx")
+
+
+# # Способы записи
+# ws["F1"] = "Привет мир"
+# ws.cell(row=1, column=3, value="Привет")
+#
+# wb.save("docs/newtable.xlsx")
+#
+#
+# # Пустой Exel-файл
+# from openpyxl import Workbook
+#
+# wb = Workbook() # wb - Workbook
+#
+# ws = wb.active
+# ws.title = "Отчёт"
+#
+# wb.save("docs/report.xlsx")
+
+# from docxtpl import DocxTemplate
+#
+# # Загрузка шаблона
+# doc = DocxTemplate("Docs/template.docx")
+#
+# # Данные для подстановки в шаблон
+# content = {
+#     "company": "ООО Монолит",
+#     "employee": "Петров Д.И.",
+#     "position": "Менеджер",
+#     "date": "01/01/2025"
+# }
+#
+# doc.render(content)
+# doc.save("docs/about.docx")
 
 # from docx import Document
 # from docx.enum.text import WD_ALIGN_PARAGRAPH
