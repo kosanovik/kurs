@@ -1,43 +1,61 @@
 # Внешние библиотеки
-# Документы
-# Word - DOCX (python-docx)
+# Документы документы по шаблону (tempalte.docx)
+# Word - DOCX (python-docx-template / docxtpl)
+# pip freeze > requiremets.txt - создание файла зависимости
+# pip install -r requiremets.txt - установка списка библиотек
 
-from docx import Document
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.shared import Cm, Inches, Mm, Pt # Для размеров
+from docxtpl import DocxTemplate
 
-doc = Document() # Сщздание экземпляра документа
+# Загрузка шаблона
+doc = DocxTemplate("Docs/template.docx")
 
-# Добавление заголовка
-doc.add_heading("Отчет за месяц", 1)
-paragraph = doc.add_paragraph()
-paragraph = doc.add_paragraph("В этом отчете представлены")
-# run - что-то внутри абзаца
-paragraph.add_run(" ключевые показатели").bold  = True
-# Новый абзац для списка
-paragraph = doc.add_paragraph()
-paragraph_format = paragraph.paragraph_format
-paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
-# Маркированный
-paragraph = doc.add_paragraph("Первый пункт", style="List Bullet")
-paragraph = doc.add_paragraph("Второй пункт", style="List Bullet")
-# Нумерованный
-paragraph = doc.add_paragraph("Первый пункт", style="List Number")
-paragraph = doc.add_paragraph("Второй пункт", style="List Number")
+# Данные для подстановки в шаблон
+content = {
+    "company": "ООО Монолит",
+    "employee": "Петров Д.И.",
+    "position": "Менеджер",
+    "date": "01/01/2025"
+}
 
-paragraph = doc.add_paragraph()
+doc.render(content)
+doc.save("docs/about.docx")
 
-# Добавляем таблицу
-table = doc.add_table(rows=3, cols=3)
-# Заполняем
-for i, row in enumerate(table.rows):
-    for j, cell in enumerate(table.columns):
-        cell.text = f"Строка {i + 1}, Столбец {j + 1}"
-
-paragraph = doc.add_paragraph()
-doc.add_picture("images/sunny_day.jpg", width=Mm(105))
-
-doc.save("Docs/report.docx")
+# from docx import Document
+# from docx.enum.text import WD_ALIGN_PARAGRAPH
+# from docx.shared import Cm, Inches, Mm, Pt # Для размеров
+#
+# doc = Document() # Сщздание экземпляра документа
+#
+# # Добавление заголовка
+# doc.add_heading("Отчет за месяц", 1)
+# paragraph = doc.add_paragraph()
+# paragraph = doc.add_paragraph("В этом отчете представлены")
+# # run - что-то внутри абзаца
+# paragraph.add_run(" ключевые показатели").bold  = True
+# # Новый абзац для списка
+# paragraph = doc.add_paragraph()
+# paragraph_format = paragraph.paragraph_format
+# paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
+# # Маркированный
+# paragraph = doc.add_paragraph("Первый пункт", style="List Bullet")
+# paragraph = doc.add_paragraph("Второй пункт", style="List Bullet")
+# # Нумерованный
+# paragraph = doc.add_paragraph("Первый пункт", style="List Number")
+# paragraph = doc.add_paragraph("Второй пункт", style="List Number")
+#
+# paragraph = doc.add_paragraph()
+#
+# # Добавляем таблицу
+# table = doc.add_table(rows=3, cols=3)
+# # Заполняем
+# for i, row in enumerate(table.rows):
+#     for j, cell in enumerate(table.columns):
+#         cell.text = f"Строка {i + 1}, Столбец {j + 1}"
+#
+# paragraph = doc.add_paragraph()
+# doc.add_picture("images/sunny_day.jpg", width=Mm(105))
+#
+# doc.save("Docs/report.docx")
 
 
 
