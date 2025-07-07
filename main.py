@@ -6,13 +6,26 @@
 # a - append (запись в конец - дозапись)
 # r - read (чтение (по умолчанию))
 # print(*args, sep=' ', end='\n', file=None, flush=False)
-from itertools import count
+# from itertools import count
 
 fo = open("info.txt", "at", encoding="utf-8")
 
+# Построчное чтение №1
+# while text := fo.readline():
+#    print(text.rstrip("\n"))
+# Построчное чтение №2
+# lst = fo.readlines()
+# lst = map(lambda x: x.strip("\n"), lst)
+# Построчное чтение №3
+text = fo.read()
+lst = text.splitlines()
+
+print(lst)
+# fo = open("info.txt", "at", encoding="utf-8")
+
 # fo.write(" Хороший текст.") # будет добавляться столько раз сколько будет запускаться
 
-print("\nA вот еще одна строка.", file=fo)
+# print("\nA вот b еще одна строка.", file=fo)
 
 # text = fo.read(11)
 # fo.read(6)
