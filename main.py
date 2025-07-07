@@ -11,12 +11,20 @@
 
 import os
 
-path = os.getcwd() # get current working directory
-print(path)
-
-os.chdir("..") # на уровень выше
+path = os.getcwd()
 os.chdir(path + "/images")
-print(os.getcwd())
+
+all_files = [f for f in os.listdir(".") if f.endswith(".jpg")]
+
+print(all_files)
+
+
+# path = os.getcwd() # get current working directory
+# print(path)
+#
+# os.chdir("..") # на уровень выше
+# os.chdir(path + "/images")
+# print(os.getcwd())
 
 
 # "Мягкое" создание директории (вместо mkdirs)
