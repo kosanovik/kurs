@@ -1,3 +1,27 @@
+# Файлы - набор данных, сохраненный на определенном носителе в виде определенной структуры (имя+расширение)
+# name.txt
+# t - текстовый файл
+# b - бинарные файлы (jpg, avi, mp3)
+# w - write (запись, если файл не существует, то он создается, если был, то в нем все стирается)
+# a - append (запись в конец - дозапись)
+# r - read (чтение)
+from itertools import count
+
+fo = open("info.txt", "wt", encoding="utf-8")
+
+print(fo.mode)
+print(fo.name)
+print(fo.encoding)
+
+count = fo.write("Этот текс будет в файле!")
+print("В файл записано", count, ",байт!")
+
+fo.close()
+
+
+
+
+
 # Пишем и подключаем свои модули
 # from . lib import summ - из текущей директории
 # from .. lib import summ - уровнем выше
@@ -8,10 +32,10 @@
 # from package_1 import * # для __all__ (* - greet)
 # import package_1
 
-from package_1 import greet, add
-
-print(greet("Мир!"))
-print(add(3, 7))
+# from package_1 import greet, add
+#
+# print(greet("Мир!"))
+# print(add(3, 7))
 # print(package_1.module._hidden_fubction())
 
 # from lib import summ
