@@ -5,23 +5,25 @@
 # import lib
 # lib.diff()
 
-from lib import summ
+# from package_1 import * # для __all__ (* - greet)
+# import package_1
 
-def main():
-    print(summ(7, 3))
+from package_1 import greet, add
 
+print(greet("Мир!"))
+print(add(3, 7))
+# print(package_1.module._hidden_fubction())
 
-if __name__ == "__main__":
-    print(summ(7, 3))
+# from lib import summ
+#
+# def main():
+#     print(summ(7, 3))
+#
+#
+# if __name__ == "__main__":
+#     print(summ(7, 3))
 
 # print(__name__)
-
-
-
-
-
-
-
 
 
 # Работа с формулами:
