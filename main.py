@@ -1,24 +1,43 @@
-# Внешние библиотеки
-# Документы документы по шаблону (tempalte.docx)
-# Excel (openpyxl)
-# Word - DOCX (python-docx-template / docxtpl)
-# pip freeze > requiremets.txt - создание файла зависимости
-# pip install -r requiremets.txt - установка списка библиотек
+# Пишем и подключаем свои модули
+# from . lib import summ - из текущей директории
+# from .. lib import summ - уровнем выше
+# from . lib import summ - относительный импорт
+# import lib
+# lib.diff()
+
+from lib import summ
+
+def main():
+    print(summ(7, 3))
+
+
+if __name__ == "__main__":
+    print(summ(7, 3))
+
+# print(__name__)
+
+
+
+
+
+
+
+
 
 # Работа с формулами:
 # ...
 # ws["A1"] = "=SUM(A1:A10)"
 
 # Чтение данных
-from openpyxl import load_workbook
-wb = load_workbook("Docs/employees.xlsx")
-ws = wb.active
-
-rows_count = ws.max_row # число заполненных строк
-
-for row in ws.iter_rows(values_only=True):
-    fio, pos, dept = row
-    print(f"Фамилия: {fio}, Должность: {pos}, Отдел: {dept}")
+# from openpyxl import load_workbook
+# wb = load_workbook("Docs/employees.xlsx")
+# ws = wb.active
+#
+# rows_count = ws.max_row # число заполненных строк
+#
+# for row in ws.iter_rows(values_only=True):
+#     fio, pos, dept = row
+#     print(f"Фамилия: {fio}, Должность: {pos}, Отдел: {dept}")
 
 
 # Запись данных в существующий файл
