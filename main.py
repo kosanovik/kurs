@@ -6,19 +6,38 @@
 # # RGB (0...255, 0...255, 0...255)
 # # thumbnail
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 
-orig = Image.open("images/sunny_day.jpg").convert("RGB")
 
-up = orig.crop((0, 0, 600, 200))
-down = orig.crop((0, 200, 600, 400))
 
-new = Image.new("RGB", (600, 400))
+orig = Image.open('images/python.jpg').convert('RGB')
+# Размытие
+blur_image = orig.filter(ImageFilter.GaussianBlur(radius=8))
+blur_image.show()
 
-new.paste(down, (0, 0))
-new.paste(up, (0, 200))
+# Усиление резкости
+enchancer = ImageEnhance.Sharpness(orig)
+sharpened_image = enchancer.enhance(4.0)
+sharpened_image.show()
 
-new.show()
+# Получить контуры
+edges = orig.filter(ImageFilter.FIND_EDGES)
+edges.show()
+
+
+# from PIL import Image, ImageDraw, ImageFont
+#
+# orig = Image.open("images/sunny_day.jpg").convert("RGB")
+#
+# up = orig.crop((0, 0, 600, 200))
+# down = orig.crop((0, 200, 600, 400))
+#
+# new = Image.new("RGB", (600, 400))
+#
+# new.paste(down, (0, 0))
+# new.paste(up, (0, 200))
+#
+# new.show()
 
 # from PIL import Image, ImageDraw, ImageFont
 #
