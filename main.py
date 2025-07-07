@@ -15,6 +15,7 @@ path = os.getcwd()
 os.chdir(path + "/images")
 
 all_files = [f for f in os.listdir(".") if f.endswith(".jpg")]
+os.chdir("..")
 
 print(all_files)
 
