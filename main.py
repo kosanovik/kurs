@@ -1,4 +1,48 @@
 # Внешние библиотеки
+# Документы
+# Word - DOCX (python-docx)
+
+from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Cm, Inches, Mm, Pt # Для размеров
+
+doc = Document() # Сщздание экземпляра документа
+
+# Добавление заголовка
+doc.add_heading("Отчет за месяц", 1)
+paragraph = doc.add_paragraph()
+paragraph = doc.add_paragraph("В этом отчете представлены")
+# run - что-то внутри абзаца
+paragraph.add_run(" ключевые показатели").bold  = True
+# Новый абзац для списка
+paragraph = doc.add_paragraph()
+paragraph_format = paragraph.paragraph_format
+paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
+# Маркированный
+paragraph = doc.add_paragraph("Первый пункт", style="List Bullet")
+paragraph = doc.add_paragraph("Второй пункт", style="List Bullet")
+# Нумерованный
+paragraph = doc.add_paragraph("Первый пункт", style="List Number")
+paragraph = doc.add_paragraph("Второй пункт", style="List Number")
+
+paragraph = doc.add_paragraph()
+
+# Добавляем таблицу
+table = doc.add_table(rows=3, cols=3)
+# Заполняем
+for i, row in enumerate(table.rows):
+    for j, cell in enumerate(table.columns):
+        cell.text = f"Строка {i + 1}, Столбец {j + 1}"
+
+paragraph = doc.add_paragraph()
+doc.add_picture("images/sunny_day.jpg", width=Mm(105))
+
+doc.save("Docs/report.docx")
+
+
+
+
+
 # Графика
 # PIL - Python Imagine Library. python3 -m pip install --upgrade pip - обновление установщика - обработка растровых изображений
 # pip freeze > requiremets.txt - создание файла зависимости
@@ -6,23 +50,21 @@
 # # RGB (0...255, 0...255, 0...255)
 # # thumbnail
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
-
-
-
-orig = Image.open('images/python.jpg').convert('RGB')
-# Размытие
-blur_image = orig.filter(ImageFilter.GaussianBlur(radius=8))
-blur_image.show()
-
-# Усиление резкости
-enchancer = ImageEnhance.Sharpness(orig)
-sharpened_image = enchancer.enhance(4.0)
-sharpened_image.show()
-
-# Получить контуры
-edges = orig.filter(ImageFilter.FIND_EDGES)
-edges.show()
+# from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
+#
+# orig = Image.open('images/python.jpg').convert('RGB')
+# # Размытие
+# blur_image = orig.filter(ImageFilter.GaussianBlur(radius=8))
+# blur_image.show()
+#
+# # Усиление резкости
+# enchancer = ImageEnhance.Sharpness(orig)
+# sharpened_image = enchancer.enhance(4.0)
+# sharpened_image.show()
+#
+# # Получить контуры
+# edges = orig.filter(ImageFilter.FIND_EDGES)
+# edges.show()
 
 
 # from PIL import Image, ImageDraw, ImageFont
