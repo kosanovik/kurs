@@ -5,34 +5,50 @@
 # pip freeze > requiremets.txt - создание файла зависимости
 # pip install -r requiremets.txt - установка списка библиотек
 
-# Запись данных в существующий файл
+# Работа с формулами:
+# ...
+# ws["A1"] = "=SUM(A1:A10)"
+
+# Чтение данных
 from openpyxl import load_workbook
-# Открываем (загружаем) рабочую книгу
-wb = load_workbook("docs/report.xlsx")
-
-# Активный лист
+wb = load_workbook("Docs/employees.xlsx")
 ws = wb.active
-# Можно и по имени обратиться
-# ws = wb["Отчёт"]
 
-# Заголовки
-ws["A1"] = "ФИО"
-ws["B1"] = "Должность"
-ws["C1"] = "Отдел"
+rows_count = ws.max_row # число заполненных строк
 
-# Данные
-employees = [
-    ["Иванов И.И.", "Менеджер", "Продажи"],
-    ["Петров И.И.", "Бухгалтер", "Финансы"],
-    ["Сидоров И.И.", "Аналитик", "IT"]
-]
+for row in ws.iter_rows(values_only=True):
+    fio, pos, dept = row
+    print(f"Фамилия: {fio}, Должность: {pos}, Отдел: {dept}")
 
-for row, data in enumerate(employees, start=2):
-    ws.cell(row=row, column=1, value=data[0])
-    ws.cell(row=row, column=2, value=data[1])
-    ws.cell(row=row, column=3, value=data[2])
 
-wb.save("Docs/employees.xlsx")
+# Запись данных в существующий файл
+# from openpyxl import load_workbook
+# # Открываем (загружаем) рабочую книгу
+# wb = load_workbook("docs/report.xlsx")
+#
+# # Активный лист
+# ws = wb.active
+# # Можно и по имени обратиться
+# # ws = wb["Отчёт"]
+#
+# # Заголовки
+# ws["A1"] = "ФИО"
+# ws["B1"] = "Должность"
+# ws["C1"] = "Отдел"
+#
+# # Данные
+# employees = [
+#     ["Иванов И.И.", "Менеджер", "Продажи"],
+#     ["Петров И.И.", "Бухгалтер", "Финансы"],
+#     ["Сидоров И.И.", "Аналитик", "IT"]
+# ]
+#
+# for row, data in enumerate(employees, start=2):
+#     ws.cell(row=row, column=1, value=data[0])
+#     ws.cell(row=row, column=2, value=data[1])
+#     ws.cell(row=row, column=3, value=data[2])
+#
+# wb.save("Docs/employees.xlsx")
 
 
 # # Способы записи
