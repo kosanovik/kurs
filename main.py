@@ -9,15 +9,32 @@
 # print(*args, sep=' ', end='\n', file=None, flush=False)
 # from itertools import count
 
-import os
 
-path = os.getcwd()
-os.chdir(path + "/images")
 
-all_files = [f for f in os.listdir(".") if f.endswith(".jpg")]
-os.chdir("..")
+res = [] # пустой список
 
-print(all_files)
+with open("info.txt", "rt") as f:
+    while temp := f.readline().rstrip("\n"):
+        res += temp.split(", ")
+
+# res = list(map(lambda x: x.rstrip("\n"), res))
+# res = set(res)
+
+res = sorted(int(x) for x in set(res)) # отсортированный список
+
+print(res)
+
+
+
+# import os
+#
+# path = os.getcwd()
+# os.chdir(path + "/images")
+#
+# all_files = [f for f in os.listdir(".") if f.endswith(".jpg")]
+# os.chdir("..")
+#
+# print(all_files)
 
 
 # path = os.getcwd() # get current working directory
@@ -34,7 +51,7 @@ print(all_files)
 #     os.rmdir("libs")
 # os.rmdir("libs")
 
-# Откhытие с менеджером контекста
+# Открытие с менеджером контекста
 # with open("info.txt", "rt", encoding="utf-8") as fo:
 #     text = fo.read()
 #     lst = text.splitlines()
