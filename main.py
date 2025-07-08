@@ -27,17 +27,26 @@
 #         fo.close()
 #         print('Продолжаем работать.')
 
-# "Бросаемся" исключениями - (throw) raise
-max_val = 10
-min_val = 1
-
+# Утверждения (assertions)
+# В основном - для нужд тестирования
 try:
-    val = int(input(f"Введите целое число от {min_val} до {max_val}: "))
-    if not min_val < val < max_val:
-        raise ValueError("Введенное число вне диапозона")
-    print(f"Введенное число {val} лежит в заданном диапозоне")
-except ValueError as exp:
-    print("Надо быть внимательнее:", exp)
+    text = input("Введите текст: ")
+    assert len(text) > 3 # это утверждение
+except AssertionError:
+    print("Слишком короткий текст")
+
+
+# "Бросаемся" исключениями - (throw) raise
+# max_val = 10
+# min_val = 1
+#
+# try:
+#     val = int(input(f"Введите целое число от {min_val} до {max_val}: "))
+#     if not min_val < val < max_val:
+#         raise ValueError("Введенное число вне диапозона")
+#     print(f"Введенное число {val} лежит в заданном диапозоне")
+# except ValueError as exp:
+#     print("Надо быть внимательнее:", exp)
 
 # print("Остаток от деления:")
 # loop = True
