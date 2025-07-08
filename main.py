@@ -1,3 +1,39 @@
+# Исключения (runtime - время исполнения программы)
+# try:
+#   что пытаемся сделать
+# except:
+#   обрабатываем исключения
+#   если исключения не было
+# finally:
+#   выполняется в любом случае
+###################################################
+
+flag False # открывался ли на запись
+try:
+    fo = open("information.txt", encoding="utf-8")
+    flag = True
+#    print(fo.read())
+#    fo.close()
+except FileNotFoundError: # исключение
+    fo = open("information.txt", "wt", encoding="utf-8")
+    print("Файл не обнаружен и создан с параметрами по умолчанию")
+    # with open("information.txt", "wt", encoding="utf-8") as fo:
+    #     fo.write("По умолчанию")
+else:
+    print("Файл открыт успешно. Читаем его и закрываем.")
+    print(fo.read())
+    fo.close()
+finally:
+    if flag: # если файл был открыт на запись
+        fo.write("По умолчанию")
+        fo.close()
+        print("Продолжаем работать.")
+
+
+
+
+
+
 # Файлы - набор данных, сохраненный на определенном носителе в виде определенной структуры (имя+расширение)
 # Файлы и ОС
 # name.txt
@@ -9,9 +45,9 @@
 # print(*args, sep=' ', end='\n', file=None, flush=False)
 # from itertools import count
 
-from path_lib import *
-
-print(img_dir)
+# from path_lib import *
+#
+# print(img_dir)
 
 
 # import pickle
