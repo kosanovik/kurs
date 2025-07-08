@@ -46,15 +46,28 @@ from sys import excepthook
 while True:
     a = input("Введите первое число: ")
     b = input("Введите второе число: ")
-
-    if a.isdigit() and b.isdigit():
-        if int(b) == 0:
-            print("На ноль делить нельзя")
-        else:
-            print(int(a) / int(b))
-            break
+    try:
+        result = int(a) / int (b)
+    except ZeroDivisionError:
+        print("На ноль делить нельзя!!!")
+    except ValueError:
+        print("Нужно вводить числа...")
+        print(f"A введено: {a} и {b} :(")
     else:
-        print("Вводить надо только целые числа.")
+        print(result)
+        break
+
+    # a = input("Введите первое число: ")
+    # b = input("Введите второе число: ")
+    #
+    # if a.isdigit() and b.isdigit():
+    #     if int(b) == 0:
+    #         print("На ноль делить нельзя")
+    #     else:
+    #         print(int(a) / int(b))
+    #         break
+    # else:
+    #     print("Вводить надо только целые числа.")
 
 
 # Утверждения (assertions)
