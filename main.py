@@ -26,6 +26,7 @@
 #         fo.write('По умолчанию')
 #         fo.close()
 #         print('Продолжаем работать.')
+from fnmatch import translate
 from sys import excepthook
 
 # Задача 1
@@ -42,20 +43,77 @@ from sys import excepthook
 #     else:
 #         print(exp)
 
-# Задача 2
+# Практикум (обучаемый словарь)
+
+import pickle
+
+from docxcompose.utils import word_to_python_date_format
+
+# минимальная версия, если файл dict.dat отсутствует
+voc = {
+    "стол": "table",
+    "стул": "chair",
+}
+
+# функция для расчета словаря
+def print_voc():
+    print("Сейчас словарь содержит: ")
+    for k, v in voc.items():
+        print(k, "-", v) # Alt + 0151
+
+# загружаем словарь из файла
+try:
+    with open("dict.dat", "rb") as dump_in:
+        voc = pickle.load(dump_in)
+except FileNotFoundError:
+    with open("dict.dat", "wb") as dump_out:
+        pickle.dump(voc, dump_out)
+    print("Создан минимальный словарь: ")
+    print_voc()
+
 while True:
-    a = input("Введите первое число: ")
-    b = input("Введите второе число: ")
-    try:
-        result = int(a) / int (b)
-    except ZeroDivisionError:
-        print("На ноль делить нельзя!!!")
-    except ValueError:
-        print("Нужно вводить числа...")
-        print(f"A введено: {a} и {b} :(")
-    else:
-        print(result)
+    temp = input("\nВведите для перевода или # для завершения: ")
+    word = temp.strip().lower()
+    if word == "#" or word == "№":
         break
+    if word in voc.keys():
+        translate = voc[word]
+        print(f"Слово {word} переводится как {translate}.\n")
+    else:
+        print(f"Значение слова {word} отсутствует в словаре.")
+        newkey = f"А как слово {word} переводится. "
+        newkey += "Если ничего невводите нажмите ENTER,\n "
+        newkey += "или введите его здесь: "
+        new_word = input(newkey)
+
+        if new_word != "" or len(new_word) > 2:
+            voc[word] = new_word
+            print(f"Слово {word} с переводом {new_word} внесено в словарь")
+        else:
+            print("Ничего не введено или слишком короткое слово")
+            continue
+
+# Сохранить словарь
+with open("dict.dat", "wb") as dump_out:
+    pickle.dump(voc, dump_out)
+
+print("До новых встреч")
+
+
+# Задача 2
+# while True:
+#     a = input("Введите первое число: ")
+#     b = input("Введите второе число: ")
+#     try:
+#         result = int(a) / int (b)
+#     except ZeroDivisionError:
+#         print("На ноль делить нельзя!!!")
+#     except ValueError:
+#         print("Нужно вводить числа...")
+#         print(f"A введено: {a} и {b} :(")
+#     else:
+#         print(result)
+#         break
 
     # a = input("Введите первое число: ")
     # b = input("Введите второе число: ")
