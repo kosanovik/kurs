@@ -9,20 +9,39 @@
 # print(*args, sep=' ', end='\n', file=None, flush=False)
 # from itertools import count
 
+import pickle
+import pprint
+
+# d = {
+#     "стол": "table",
+#     "стул": "chair"
+# }
+
+# сериализация
+# with open("dictfile.dat", "wb") as p:
+#     # d - что сериализуем
+#     # p - куда сериализуем
+#     pickle.dump(d, p)
+
+# десуриализация
+with open("dictfile.dat", "rb") as p:
+    d = pickle.load(p)
+
+pprint.pprint(d, width=15)
 
 
-res = [] # пустой список
-
-with open("info.txt", "rt") as f:
-    while temp := f.readline().rstrip("\n"):
-        res += temp.split(", ")
-
-# res = list(map(lambda x: x.rstrip("\n"), res))
-# res = set(res)
-
-res = sorted(int(x) for x in set(res)) # отсортированный список
-
-print(res)
+# res = [] # пустой список
+#
+# with open("info.txt", "rt") as f:
+#     while temp := f.readline().rstrip("\n"):
+#         res += temp.split(", ")
+#
+# # res = list(map(lambda x: x.rstrip("\n"), res))
+# # res = set(res)
+#
+# res = sorted(int(x) for x in set(res)) # отсортированный список
+#
+# print(res)
 
 
 
