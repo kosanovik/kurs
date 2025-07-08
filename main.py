@@ -26,14 +26,31 @@
 #         fo.write('По умолчанию')
 #         fo.close()
 #         print('Продолжаем работать.')
+from sys import excepthook
+
+# Задача 1
+lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+try:
+    index = int(input("Введите индекс: "))
+    if not -len(lst) < index < len(lst) - 1:
+        raise ValueError("Индекс вне диапозона")
+    res = lst[index]
+    print(f"Число по индексу {index}: {lst[index]}")
+except ValueError as exp:
+    if exp.args[0].startswith("invalid literal"):
+        print(f"Вводить надо числа")
+    else:
+        print(exp)
+
+# Задача 2
 
 # Утверждения (assertions)
 # В основном - для нужд тестирования
-try:
-    text = input("Введите текст: ")
-    assert len(text) > 3 # это утверждение
-except AssertionError:
-    print("Слишком короткий текст")
+# try:
+#     text = input("Введите текст: ")
+#     assert len(text) > 3 # это утверждение
+# except AssertionError:
+#     print("Слишком короткий текст")
 
 
 # "Бросаемся" исключениями - (throw) raise
@@ -613,7 +630,7 @@ except AssertionError:
 # Черепашья графика
 
 import sys
-from operator import length_hint
+from operator import length_hint, index
 
 # strings = [d.strip("\n") for d in sys.stdin.readlines()]
 # length = len(strings) # сколько строк
