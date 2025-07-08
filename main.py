@@ -7,27 +7,55 @@
 # finally:
 #   выполняется в любом случае
 ###################################################
-flag = False  # открывался ли на запись
+# flag = False  # открывался ли на запись
+#
+# try:
+#     fo = open('information.txt', encoding='utf-8')
+# except FileNotFoundError:
+#     fo = open('information.txt', 'wt', encoding='utf-8')
+#     flag = True
+#     print('Файл не обнаружен и создан с параметрами по умолчанию')
+# # with open('information.txt', 'wt', encoding='utf-8') as fo:
+# #     fo.write('По умолчанию')
+# else:
+#     print('Файл открыт успешно. Читаем его и закрываем.')
+#     print(fo.read())
+#     fo.close()
+# finally:
+#     if flag:  # если файл был открыт на запись
+#         fo.write('По умолчанию')
+#         fo.close()
+#         print('Продолжаем работать.')
+
+# "Бросаемся" исключениями - (throw) raise
+max_val = 10
+min_val = 1
 
 try:
-    fo = open('information.txt', encoding='utf-8')
-except FileNotFoundError:
-    fo = open('information.txt', 'wt', encoding='utf-8')
-    flag = True
-    print('Файл не обнаружен и создан с параметрами по умолчанию')
-# with open('information.txt', 'wt', encoding='utf-8') as fo:
-#     fo.write('По умолчанию')
-else:
-    print('Файл открыт успешно. Читаем его и закрываем.')
-    print(fo.read())
-    fo.close()
-finally:
-    if flag:  # если файл был открыт на запись
-        fo.write('По умолчанию')
-        fo.close()
-        print('Продолжаем работать.')
+    val = int(input(f"Введите целое число от {min_val} до {max_val}: "))
+    if not min_val < val < max_val:
+        raise ValueError("Введенное число вне диапозона")
+    print(f"Введенное число {val} лежит в заданном диапозоне")
+except ValueError as exp:
+    print("Надо быть внимательнее:", exp)
 
-
+# print("Остаток от деления:")
+# loop = True
+# while loop:
+#     try:
+#         value = int(input("На что делим число 10:"))
+#         res  = 10 % value
+#         print(f"Остаток от деления 10 на {value} = {res}")
+#     except ZeroDivisionError:
+#         print("На ноль делить нельзя!")
+#     except ValueError:
+#         print("Надо вводить только целые числа")
+#     except Exception as exp:
+#         print("Произошло исключение:",
+#               exp.__class__.__name__,
+#               exp)
+#     else:
+#         loop = False
 
 
 
