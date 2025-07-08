@@ -9,8 +9,13 @@
 # print(*args, sep=' ', end='\n', file=None, flush=False)
 # from itertools import count
 
-import pickle
-import pprint
+from path_lib import *
+
+print(img_dir)
+
+
+# import pickle
+# import pprint
 
 # d = {
 #     "стол": "table",
@@ -24,10 +29,10 @@ import pprint
 #     pickle.dump(d, p)
 
 # десуриализация
-with open("dictfile.dat", "rb") as p:
-    d = pickle.load(p)
-
-pprint.pprint(d, width=15)
+# with open("dictfile.dat", "rb") as p:
+#     d = pickle.load(p)
+#
+# pprint.pprint(d, width=15)
 
 
 # res = [] # пустой список
