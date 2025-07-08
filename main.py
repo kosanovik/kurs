@@ -47,57 +47,110 @@ from sys import excepthook
 
 import pickle
 
-from docxcompose.utils import word_to_python_date_format
-
 # минимальная версия, если файл dict.dat отсутствует
 voc = {
-    "стол": "table",
-    "стул": "chair",
+    'стол': 'table',
+    'стул': 'chair',
 }
 
-# функция для расчета словаря
+
+# функция для распечатки словаря
 def print_voc():
-    print("Сейчас словарь содержит: ")
+    print('Сейчас словарь содержит: ')
     for k, v in voc.items():
-        print(k, "-", v) # Alt + 0151
+        print(k, '—', v)  # Alt + 0151
 
 # загружаем словарь из файла
 try:
-    with open("dict.dat", "rb") as dump_in:
+    with open('dict.dat', 'rb') as dump_in:
         voc = pickle.load(dump_in)
 except FileNotFoundError:
-    with open("dict.dat", "wb") as dump_out:
+    with open('dict.dat', 'wb') as dump_out:
         pickle.dump(voc, dump_out)
-    print("Создан минимальный словарь: ")
+    print('Создан минимальный словарь: ')
     print_voc()
 
 while True:
-    temp = input("\nВведите для перевода или # для завершения: ")
+    temp = input('\nВведите слово для перевода или "#" для завершения: ')
     word = temp.strip().lower()
-    if word == "#" or word == "№":
+    if word == '#' or word == '№':
         break
     if word in voc.keys():
         translate = voc[word]
-        print(f"Слово {word} переводится как {translate}.\n")
+        print(f'Слово "{word}" переводится как {translate}.\n')
     else:
-        print(f"Значение слова {word} отсутствует в словаре.")
-        newkey = f"А как слово {word} переводится. "
-        newkey += "Если ничего невводите нажмите ENTER,\n "
-        newkey += "или введите его здесь: "
+        print(f'Значение слова {word} отсутствует в словаре.')
+        newkey = f'А как слово {word} переводится.\n'
+        newkey += 'Если ничего не вводите нажмите ENTER,\n '
+        newkey += 'или введите его здесь: '
         new_word = input(newkey)
 
-        if new_word != "" or len(new_word) > 2:
+        if new_word != '' or len(new_word) > 2:
             voc[word] = new_word
-            print(f"Слово {word} с переводом {new_word} внесено в словарь")
+            print(f'Слово {word} с переводом {new_word} внесено в словарь')
         else:
-            print("Ничего не введено или слишком короткое слово")
+            print('Ничего не введено или слишком короткое слово')
             continue
 
 # Сохранить словарь
-with open("dict.dat", "wb") as dump_out:
+with open('dict.dat', 'wb') as dump_out:
     pickle.dump(voc, dump_out)
 
-print("До новых встреч")
+print('До новых встреч!!!')
+
+# import pickle
+#
+# from docxcompose.utils import word_to_python_date_format
+#
+# # минимальная версия, если файл dict.dat отсутствует
+# voc = {
+#     "стол": "table",
+#     "стул": "chair",
+# }
+#
+# # функция для расчета словаря
+# def print_voc():
+#     print("Сейчас словарь содержит: ")
+#     for k, v in voc.items():
+#         print(k, "-", v) # Alt + 0151
+#
+# # загружаем словарь из файла
+# try:
+#     with open("dict.dat", "rb") as dump_in:
+#         voc = pickle.load(dump_in)
+# except FileNotFoundError:
+#     with open("dict.dat", "wb") as dump_out:
+#         pickle.dump(voc, dump_out)
+#     print("Создан минимальный словарь: ")
+#     print_voc()
+#
+# while True:
+#     temp = input("\nВведите для перевода или # для завершения: ")
+#     word = temp.strip().lower()
+#     if word == "#" or word == "№":
+#         break
+#     if word in voc.keys():
+#         translate = voc[word]
+#         print(f"Слово {word} переводится как {translate}.\n")
+#     else:
+#         print(f"Значение слова {word} отсутствует в словаре.")
+#         newkey = f"А как слово {word} переводится. "
+#         newkey += "Если ничего невводите нажмите ENTER,\n "
+#         newkey += "или введите его здесь: "
+#         new_word = input(newkey)
+#
+#         if new_word != "" or len(new_word) > 2:
+#             voc[word] = new_word
+#             print(f"Слово {word} с переводом {new_word} внесено в словарь")
+#         else:
+#             print("Ничего не введено или слишком короткое слово")
+#             continue
+#
+# # Сохранить словарь
+# with open("dict.dat", "wb") as dump_out:
+#     pickle.dump(voc, dump_out)
+#
+# print("До новых встреч")
 
 
 # Задача 2
