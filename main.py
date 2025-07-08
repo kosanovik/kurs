@@ -45,7 +45,7 @@ from sys import excepthook
 # Задача 2
 while True:
     a = input("Введите первое число: ")
-    b = input("Введите первое число: ")
+    b = input("Введите второе число: ")
 
     if a.isdigit() and b.isdigit():
         if int(b) == 0:
