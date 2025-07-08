@@ -14,6 +14,17 @@
 
 import re
 
+text = "Привет, мир! Как дела?"
+clean_text = re.sub(r'[^\w\s]', '', text)
+print(clean_text)  # Вывод: "Привет мир Как дела"
+
+# r'[^\w\s]' — это регулярное выражение, которое означает:
+# ^ — отрицание (исключение).
+# \w — соответствует любому слову (буквы, цифры, подчеркивание).
+# \s — соответствует любому пробельному символу (пробел, табуляция, новая строка).
+# Таким образом, [^\w\s] соответствует любому символу, который не является словом или пробелом, то есть знакам препинания.
+# re.sub(r'[^\w\s]', '', text) — заменяет все найденные знаки препинания на пустую строку.
+
 # pattern = r"\b\w{4}\b" # все слова из 4х символов
 # pattern = r"\d" # все цифры от 0 до 9
 # pattern = r"\d{3}" # три цифры подряд
@@ -23,17 +34,17 @@ import re
 # pattern = "[^ерм]" # вывести все не включая ерм - исключить символы
 # pattern = r"\((.+?)\)" # вытащить текст из скобок
 # pattern = "o{2,5}"
-pattern = "Go{2,}gle" # Google где 2 буквы o и более
+# pattern = "Go{2,}gle" # Google где 2 буквы o и более
 
-test_string = "Google, Gooogle, Goooogle"
+# test_string = "Google, Gooogle, Goooogle"
 # test_string = "Поиск по образцу (pattern)"
 # test_string = "Время - 07:45"
 
 # result = re.search(pattern, test_string)
-result = re.findall(pattern, test_string)
+# result = re.findall(pattern, test_string)
 # Ternary if (тернарный условный оператор)
 # print("Цифры есть") if result else print("Цифр нет")
-print(result)
+# print(result)
 
 
 
