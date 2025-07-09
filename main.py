@@ -11,6 +11,20 @@
 # + - от 1 до бесконечности (32767) {1,}
 # http://regex101.com
 
+import re
+
+# Убираем все знаки препинания
+def remove_punctuation(input_str: str) -> str:
+    # методом sub() заменяем все найденные совпадения пустой строкой и возвращаем "очищенную"
+    # :param input_str: строка со знаками припинания
+    # :return: строку, очищенную от зн. преп.
+    return re.sub(r"[^\w\s]", "", input_str)
+test_string = "Язык Python, являясь интуитивно понятным, прост для изучения! Ну и PEP8"
+
+result = remove_punctuation(test_string)
+
+print(result)
+
 # дз - регулярные выражения кот убирают знаки припинания
 
 # import re
@@ -28,7 +42,7 @@
 
 #####################################################################
 
-import re
+# import re
 
 # pattern = r"\b\w{4}\b" # все слова из 4х символов
 # pattern = r"\d" # все цифры от 0 до 9
@@ -56,17 +70,17 @@ import re
 
 # pattern = "<p>(.*?)</p>" # содержимое абзаца html
 
-pattern = r"<p[^>]*>(.*)</p>" # более универсальная запись. содержимое абзаца html с атрибутами
+# pattern = r"<p[^>]*>(.*)</p>" # более универсальная запись. содержимое абзаца html с атрибутами
 
 # test_string = "<b>Вот начало: </b><p>Содержимое</p><i>b и т.д.</i>"
-test_string = "<b>Центириуем</b><p align=center>Содержимое</p>"
+# test_string = "<b>Центириуем</b><p align=center>Содержимое</p>"
 
 
 # result = re.search(pattern, test_string)
-result = re.findall(pattern, test_string)
+# result = re.findall(pattern, test_string)
 # Ternary if (тернарный условный оператор)
 # print("Цифры есть") if result else print("Цифр нет")
-print(result)
+# print(result)
 
 
 
