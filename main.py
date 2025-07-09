@@ -12,6 +12,14 @@
 # http://regex101.com
 
 import re
+import requests
+
+pattern = r'<img[^>]+src="([^">]+)"'
+# Сначала проверили
+# test_string = '<img height="50" width="150" src="images/bg.jpg">'
+html = requests.get('https://skilbox.ru').text
+result = re.findall(pattern, html)
+print(result)
 
 
 # Убираем все знаки препинания
@@ -22,19 +30,15 @@ import re
 #     return re.sub(r"[^\w\s]", "", input_str)
 # test_string = "Язык Python, являясь интуитивно понятным, прост для изучения! Ну и PEP8"
 
-pattern = r"[,.:!;]"
-test_string = "   яблоко    ;   груша, банан:   слива   !  абрикос"
-# test_string = "".join(test_string.split()) # убрали все пробелы
-
-result = re.split(pattern, test_string)
-
-# через map
-# result = list(map(lambda x: x.strip(), result))
-# через списочное выражение (list comprehension)
-result = sorted(x.strip() for x in result)
-
-
-print(result)
+# pattern = r"[,.:!;]"
+# test_string = "   яблоко    ;   груша, банан:   слива   !  абрикос"
+# # test_string = "".join(test_string.split()) # убрали все пробелы
+# result = re.split(pattern, test_string)
+# # через map
+# # result = list(map(lambda x: x.strip(), result))
+# # через списочное выражение (list comprehension)
+# result = sorted(x.strip() for x in result)
+# print(result)
 
 # дз - регулярные выражения кот убирают знаки припинания
 
