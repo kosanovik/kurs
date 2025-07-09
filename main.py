@@ -11,14 +11,31 @@
 
 from lib import Balance
 
-b = Balance()
+def main():
+    balance = Balance()
+    while True:
+        print("1. Добавить вес на левую чашу")
+        print("2. Добавить вес на правую чашу")
+        print("3. Показать результат")
+        print("4. Выход")
+        choice = input("Выберите действие: ")
+#
+        if choice == "1":
+            weight = float(input("Введите вес (в граммах): "))
+            balance.add_left(weight)
+        elif choice == "2":
+            weight = float(input("Введите вес (в граммах): "))
+            balance.add_right(weight)
+        elif choice == "3":
+            print("Результат:", balance.result())
+        elif choice == "4":
+            print("Выход из программы.")
+            break
+        else:
+            print("Неверный выбор. Попробуйте снова.")
 
-b.add_right(5)
-b.add_left(10)
-b.add_right(5)
-b.add_right(3)
-
-print(b.result())
+if __name__ == "__main__":
+    main()
 
 # from lib import Separator
 #
