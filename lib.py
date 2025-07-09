@@ -12,18 +12,22 @@ from tkinter.ttk import Separator
 #     print("Это библиотека, а исполняемый - main.py")
 
 
-# class Separator:
-#     def __init__(self):
-#         self.odd = []
-#         self.even = []
-#
-#     def add_num(self, num):
-#         pass
-#
-#     def get_odd(self, num):
-#         pass
-#
-#     def get_even(self):
+class Separator:
+    def __init__(self):
+        self.odd = []
+        self.even = []  # чётные
+
+    def add_num(self, num):
+        if num % 2:
+            self.odd.append(num)
+        else:
+            self.even.append(num)
+
+    def get_odd(self):
+        return self.odd
+
+    def get_even(self):
+        return self.even
 
 
 class Clicker:
