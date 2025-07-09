@@ -1,16 +1,50 @@
-def summ(a, b):
-    return a + b
+from symtable import Class
+from tkinter.ttk import Separator
 
-def diff(a, b):
-    return a - b
 
-if __name__ != "__main__":
-    print("Это библиотека, а исполняемый - main.py")
+# def summ(a, b):
+#     return a + b
+#
+# def diff(a, b):
+#     return a - b
+#
+# if __name__ != "__main__":
+#     print("Это библиотека, а исполняемый - main.py")
+
+
+# class Separator:
+#     def __init__(self):
+#         self.odd = []
+#         self.even = []
+#
+#     def add_num(self, num):
+#         pass
+#
+#     def get_odd(self, num):
+#         pass
+#
+#     def get_even(self):
+
+
+class Clicker:
+    def __init__(self):
+        self._counter = 0
+
+    def click(self):
+        self._counter += 1
+
+    def get_counter(self):
+        return self._counter
+
+    def reset(self):
+        self._counter = 0
+
+
+
 
 class Car:
     counter = 0  # статическое свойство (счетчик машин)
     def __init__(self, brand="Noname", model="NoModel", color="NoColor"):
-
         self.brand = brand # "Skoda"
         self.model = model # "Octavia"
         self.color = color # "red"

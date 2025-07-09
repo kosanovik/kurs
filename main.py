@@ -9,14 +9,30 @@
 
 # Геттеры и сеттеры
 
+from lib import Clicker
+
+cl = Clicker()
+
+cl.click()
+cl.click()
+cl.click()
+
+print(cl.get_counter())
+cl.reset()
+print(cl.get_counter())
+
 # Статичные члены класса
-from lib import Car
+# from lib import Car
+#
+# car = Car()
+#
+# print(dir(car))
 
-car1 = Car()
-car2 = Car()
-car3 = Car()
-
-print('В парке машин:', Car.get_counter())
+# car1 = Car()
+# car2 = Car()
+# car3 = Car()
+#
+# print('В парке машин:', Car.get_counter())
 
 # from lib import Person
 #
