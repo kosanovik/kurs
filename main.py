@@ -5,34 +5,75 @@
 # атрибуты - делятся на свойства им методы
 # Свойства классов
 # Методы классов и анализ предыдущих вызовов
+# Конструктор
 
-from lib import Car
+# Геттеры и сеттеры
 
-# class Car:
-#     def __init__(self, brand="Noname", model="NoModel", color="NoColor"):
-#         self.brand = brand # "Skoda"
-#         self.model = model # "Octavia"
-#         self.color = color # "red"
-#         self.engine_on = False
+class Person:
+    def __init__(self, name='Bill', age=1):
+        # свойства (поля) класса
+        self._name = name
+        self._age = age
+
+    # setters
+    def set_name(self, new_name):
+        if new_name:
+            self._name = new_name
+
+    def set_age(self, new_age):
+        if 0 < new_age < 150:
+            self._age = new_age
+        else:
+            print('Некорректный возраст — ', new_age)
+
+    # getters
+    def get_name(self):
+        return self._name
+
+    def get_age(self):
+        return self._age
+
+    def person_info(self):
+        print(f'Человек с именем {self._name}. Возраст: {self._age}')
+
+
+p = Person()
+p.set_age(7897)
+print(p.get_name())
+p.person_info()
+
+# p._age = 856
+# print(p._age)
+# print(p._name)
+
+
+# from lib import Car
 #
-#     def start_engine(self):
-#         self.engine_on = True  # пока не сработает
+# # class Car:
+# #     def __init__(self, brand="Noname", model="NoModel", color="NoColor"):
+# #         self.brand = brand # "Skoda"
+# #         self.model = model # "Octavia"
+# #         self.color = color # "red"
+# #         self.engine_on = False
+# #
+# #     def start_engine(self):
+# #         self.engine_on = True  # пока не сработает
+# #
+# #     def drive_to(self, place):
+# #         if self.engine_on:
+# #             print(f'Едем в {place} на {self.brand} {self.model}')
+# #         else:
+# #             print('Двигатель не заведён, не едем')
 #
-#     def drive_to(self, place):
-#         if self.engine_on:
-#             print(f'Едем в {place} на {self.brand} {self.model}')
-#         else:
-#             print('Двигатель не заведён, не едем')
-
-
-car = Car("Skoda", "Octavia", "red")
-car.start_engine()
-# car.engine_on = True
-car.drive_to('город')
-
-car2 = Car()
-car2.start_engine()
-car2.drive_to('город')
+#
+# car = Car("Skoda", "Octavia", "red")
+# car.start_engine()
+# # car.engine_on = True
+# car.drive_to('город')
+#
+# car2 = Car()
+# car2.start_engine()
+# car2.drive_to('город')
 
 
 # class Greater:
