@@ -13,15 +13,26 @@
 
 import re
 
-# Убираем все знаки препинания
-def remove_punctuation(input_str: str) -> str:
-    # методом sub() заменяем все найденные совпадения пустой строкой и возвращаем "очищенную"
-    # :param input_str: строка со знаками припинания
-    # :return: строку, очищенную от зн. преп.
-    return re.sub(r"[^\w\s]", "", input_str)
-test_string = "Язык Python, являясь интуитивно понятным, прост для изучения! Ну и PEP8"
 
-result = remove_punctuation(test_string)
+# Убираем все знаки препинания
+# def remove_punctuation(input_str: str) -> str:
+#     # методом sub() заменяем все найденные совпадения пустой строкой и возвращаем "очищенную"
+#     # :param input_str: строка со знаками припинания
+#     # :return: строку, очищенную от зн. преп.
+#     return re.sub(r"[^\w\s]", "", input_str)
+# test_string = "Язык Python, являясь интуитивно понятным, прост для изучения! Ну и PEP8"
+
+pattern = r"[,.:!;]"
+test_string = "   яблоко    ;   груша, банан:   слива   !  абрикос"
+# test_string = "".join(test_string.split()) # убрали все пробелы
+
+result = re.split(pattern, test_string)
+
+# через map
+# result = list(map(lambda x: x.strip(), result))
+# через списочное выражение (list comprehension)
+result = sorted(x.strip() for x in result)
+
 
 print(result)
 
