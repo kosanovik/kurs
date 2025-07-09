@@ -1,3 +1,68 @@
+# Объектно ориентированное программирование (ООП) (encapsulation)
+# класс - прототип будущего объекта который описывает его свойства и поведение
+# класс - данные и методы по их обработке
+# экземпляр - объект пораждённый классом (объект экземпляр класса)
+# атрибуты - делятся на свойства им методы
+# Свойства классов
+# Методы классов и анализ предыдущих вызовов
+
+class Car:
+    def __init__(self):
+        print('Конструктор вызван')
+
+    def start_engine(self):
+        self.engine_on = True  # пока не сработает
+
+    def drive_to(self, place):
+        if self.engine_on:
+            print(f'Едем в {place}')
+        else:
+            print('Двигатель не заведён, не едем')
+
+car = Car()
+car.start_engine()
+car.drive_to('город')
+
+
+# class Greater:
+#     def hello(self, name="Noname") -> None:
+#         print('Привет,', name)
+#
+#     def goodbye(self):
+#         print("Пока!")
+#
+#
+# g = Greater()
+# g.hello("Ольга")
+# g.goodbye()
+#
+# g2 = Greater()
+# g2.hello()
+# g2.goodbye()
+
+# # создание класса
+# class Fruit:
+#     pass
+#
+#
+# a = Fruit() # экземпляр
+# b = Fruit()
+# с = Fruit()
+#
+# a.name = "Яблоко"
+# a.weight = 120
+# # a = 3
+# # print(a.__class__.__name__.)
+# b.name = "Банан"
+# b.weight = 140
+#
+# print(a.name)
+# print(с.weight)
+
+
+
+
+
 # Регулярные выражения (поиск по паттерну)
 # Regular Expressions (re)
 # r-строка - raw-string ("сырая" строка)
@@ -11,15 +76,15 @@
 # + - от 1 до бесконечности (32767) {1,}
 # http://regex101.com
 
-import re
-import requests
-
-pattern = r'<img[^>]+src="([^">]+)"'
-# Сначала проверили
-# test_string = '<img height="50" width="150" src="images/bg.jpg">'
-html = requests.get('https://skillbox.ru').text
-result = re.findall(pattern, html)
-print(result)
+# import re
+# import requests
+#
+# pattern = r'<img[^>]+src="([^">]+)"'
+# # Сначала проверили
+# # test_string = '<img height="50" width="150" src="images/bg.jpg">'
+# html = requests.get('https://skillbox.ru').text
+# result = re.findall(pattern, html)
+# print(result)
 
 
 # Убираем все знаки препинания
