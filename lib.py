@@ -11,6 +11,51 @@ from tkinter.ttk import Separator
 # if __name__ != "__main__":
 #     print("Это библиотека, а исполняемый - main.py")
 
+class Balance:
+    def __init__(self):
+        self.right = 0
+        self.left = 0
+
+    def add_left(self, weight):  # в граммах
+        self.left += weight
+
+    def add_right(self, weight):  # в граммах
+        self.right += weight
+
+    def result(self) -> str:
+        if self.left > self.right:
+            return "L"
+        elif self.right > self.left:
+            return "R"
+        else:
+            return "="
+
+# def main():
+#     balance = Balance()
+#     while True:
+#         print("1. Добавить вес на левую чашу")
+#         print("2. Добавить вес на правую чашу")
+#         print("3. Показать результат")
+#         print("4. Выход")
+#         choice = input("Выберите действие: ")
+#
+#         if choice == "1":
+#             weight = float(input("Введите вес (в граммах): "))
+#             balance.add_left(weight)
+#         elif choice == "2":
+#             weight = float(input("Введите вес (в граммах): "))
+#             balance.add_right(weight)
+#         elif choice == "3":
+#             print("Результат:", balance.result())
+#         elif choice == "4":
+#             print("Выход из программы.")
+#             break
+#         else:
+#             print("Неверный выбор. Попробуйте снова.")
+#
+# if __name__ == "__main__":
+#     main()
+
 class Sorter:
     def __init__(self):
         self.words = []
