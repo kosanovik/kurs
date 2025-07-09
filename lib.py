@@ -8,11 +8,14 @@ if __name__ != "__main__":
     print("Это библиотека, а исполняемый - main.py")
 
 class Car:
+    counter = 0  # статическое свойство (счетчик машин)
     def __init__(self, brand="Noname", model="NoModel", color="NoColor"):
+
         self.brand = brand # "Skoda"
         self.model = model # "Octavia"
         self.color = color # "red"
         self.engine_on = False
+        Car.counter += 1
 
     def start_engine(self):
         self.engine_on = True  # пока не сработает
@@ -22,6 +25,10 @@ class Car:
             print(f'Едем в {place} на {self.brand} {self.model}')
         else:
             print('Двигатель не заведён, не едем')
+
+    @staticmethod
+    def get_counter():
+        return Car.counter
 
 class Person:
     def __init__(self, name='Bill', age=1):

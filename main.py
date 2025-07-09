@@ -9,12 +9,21 @@
 
 # Геттеры и сеттеры
 
-from lib import Person
+# Статичные члены класса
+from lib import Car
 
-p = Person()
-p.set_age(7897)
-print(p.get_name())
-p.person_info()
+car1 = Car()
+car2 = Car()
+car3 = Car()
+
+print('В парке машин:', Car.get_counter())
+
+# from lib import Person
+#
+# p = Person()
+# p.set_age(7897)
+# print(p.get_name())
+# p.person_info()
 
 # p._age = 856
 # print(p._age)
