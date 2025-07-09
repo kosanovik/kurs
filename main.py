@@ -9,14 +9,25 @@
 
 # Геттеры и сеттеры
 
-from lib import Separator
+from lib import Sorter
 
-s = Separator()
+s = Sorter()
 
-for i in range(20):
-    s.add_num(i)
+s.add_word('так')
+s.add_word('привет')
+s.add_word('пока')
+s.add_word('здорово')
 
-print(s.get_even())
+print(s.result())
+
+# from lib import Separator
+#
+# s = Separator()
+#
+# for i in range(20):
+#     s.add_num(i)
+#
+# print(s.get_even())
 
 # from lib import Clicker
 #

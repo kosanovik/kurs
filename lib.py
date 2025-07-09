@@ -11,6 +11,17 @@ from tkinter.ttk import Separator
 # if __name__ != "__main__":
 #     print("Это библиотека, а исполняемый - main.py")
 
+class Sorter:
+    def __init__(self):
+        self.words = []
+
+    def add_word(self, word):
+        self.words.append(word)
+
+    def result(self):
+        # список слов, отсортированный по длине
+        return sorted(self.words, key=lambda x: len(x), reverse=True)
+
 
 class Separator:
     def __init__(self):
@@ -44,8 +55,6 @@ class Clicker:
         self._counter = 0
 
 
-
-
 class Car:
     counter = 0  # статическое свойство (счетчик машин)
     def __init__(self, brand="Noname", model="NoModel", color="NoColor"):
@@ -67,6 +76,7 @@ class Car:
     @staticmethod
     def get_counter():
         return Car.counter
+
 
 class Person:
     def __init__(self, name='Bill', age=1):
