@@ -1,102 +1,126 @@
+# ООП
+
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self._owner = owner
+        self._balance = balance
+
+    def get_balance(self):
+        return self._balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
+            print(f"Депозит пополнен на сумму {amount}")
+        else:
+            print(f"Нельзя вводить отрицательную сумму на депозит.")
+
+    def withdraw(self, amount):
+        if 0 < amount <= self._balance:
+            self._balance -= amount
+            print(f"с депозита снята сумма {amount}.")
+        else:
+            print(f"Не хватает средств. Овердрафт не доступен.")
+
+client1 = BankAccount("Jonh")
+client1.deposit(500)
+client1.withdraw(400)
+print("Остаток:", client1.get_balance())
+
+
+
+#
 # ООП (inheritance)
 # класс, от которого наследуем: базовый, родительский, суперкласс
 # класс, который наследуется называется производным и дочерним
 
-from math import pi
-
-from abc import ABC, abstractmethod
-
-class Shape(object):
-    def info(self):
-        print(f'Класс: {self.__class__.__name__}')
-
-    def area(self):
-        pass
-
-    def perimetr(self):
-        pass
-
-# Фигуры
-class Circle(Shape):
-    def __init__(self, radius):
-        self.radius = radius
-        self.name = 'круг'
-
-    def perimetr(self):
-        return round(2 * pi * self.radius, 2)
-
-    def area(self):
-        return round(pi * self.radius ** 2, 2)
-
-    def get_name(self):
-        return self.name
-
-
-class Rectangle(Shape):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-        self.name = 'прямоугольник'
-
-    def perimetr(self):
-        return 2 * (self.width + self.height)
-
-    def area(self):
-        return self.width * self.height
-
-    def get_name(self):
-        return self.name
-
-
-class Square(Rectangle):
-    def __init__(self, side):
-        super().__init__(side, side)
-        self.name = 'квадрат'
-
-    # def perimetr(self):
-    #     return 4 * self.side
-    #
-    # def area(self):
-    #     return self.side ** 2
-
-class Triangle(Square):
-    def __init__(self, side):
-        super().__init__(side)
-        self.side = side
-        self.name = "трекгольник"
-
-    def area(self):
-        return (self.side ** 2 * 3 ** 0.5) / 4
-
-    def perimetr(self):
-        return self.side * 3
-
-
-s = Square(5)
-print(s.area())
-print(s.perimetr())
-print(s.get_name())
-s.info()
-
-circle = Circle(5)
-print(circle.area())
-print(circle.perimetr())
-print(circle.get_name())
-circle.info()
-
-tr = Triangle(8)
-print(tr.area())
-print(tr.perimetr())
-print(tr.get_name())
-tr.info()
-
-
-
-
-
-
-
-
+# from math import pi
+#
+# from abc import ABC, abstractmethod
+#
+# class Shape(object):
+#     def info(self):
+#         print(f'Класс: {self.__class__.__name__}')
+#
+#     def area(self):
+#         pass
+#
+#     def perimetr(self):
+#         pass
+#
+# # Фигуры
+# class Circle(Shape):
+#     def __init__(self, radius):
+#         self.radius = radius
+#         self.name = 'круг'
+#
+#     def perimetr(self):
+#         return round(2 * pi * self.radius, 2)
+#
+#     def area(self):
+#         return round(pi * self.radius ** 2, 2)
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# class Rectangle(Shape):
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+#         self.name = 'прямоугольник'
+#
+#     def perimetr(self):
+#         return 2 * (self.width + self.height)
+#
+#     def area(self):
+#         return self.width * self.height
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# class Square(Rectangle):
+#     def __init__(self, side):
+#         super().__init__(side, side)
+#         self.name = 'квадрат'
+#
+#     # def perimetr(self):
+#     #     return 4 * self.side
+#     #
+#     # def area(self):
+#     #     return self.side ** 2
+#
+# class Triangle(Square):
+#     def __init__(self, side):
+#         super().__init__(side)
+#         self.side = side
+#         self.name = "трекгольник"
+#
+#     def area(self):
+#         return (self.side ** 2 * 3 ** 0.5) / 4
+#
+#     def perimetr(self):
+#         return self.side * 3
+#
+#
+# s = Square(5)
+# print(s.area())
+# print(s.perimetr())
+# print(s.get_name())
+# s.info()
+#
+# circle = Circle(5)
+# print(circle.area())
+# print(circle.perimetr())
+# print(circle.get_name())
+# circle.info()
+#
+# tr = Triangle(8)
+# print(tr.area())
+# print(tr.perimetr())
+# print(tr.get_name())
+# tr.info()
 
 
 
