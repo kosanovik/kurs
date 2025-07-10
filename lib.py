@@ -11,6 +11,8 @@ from tkinter.ttk import Separator
 # if __name__ != "__main__":
 #     print("Это библиотека, а исполняемый - main.py")
 
+
+
 class Sorter:
     def __init__(self):
         self.words = []

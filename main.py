@@ -1,3 +1,48 @@
+# ООП (magic methods)
+#
+
+class Mytime:
+    def __init__(self, minutes, seconds):
+            self.seconds = seconds
+            self.minutes = minutes
+
+    def __add__(self, other):
+        m = self.minutes + other.minutes
+        s = self.seconds + other.seconds
+        m += s // 60
+        s = s % 60
+        m = m % 60
+        return Mytime(m, s)
+
+    def __str__(self):
+        return f"<Time {self.minutes:02}:{self.seconds:02}>"
+
+
+t1 = Mytime(13, 15)
+t2 = Mytime(43, 25)
+print(t1 + t2)
+
+class Mytime:
+    def __init__(self, minutes, seconds):
+        if 0 <= minutes < 60:
+            self.minutes = minutes
+        if 0 <=seconds < 60:
+            self.seconds = seconds
+
+    def __str__(self):
+        return f"<Time {self.minutes}:{self.seconds}>"
+
+
+t1 = Mytime(13, 15)
+# t2 = Mytime(43, 25)
+print(t1)
+
+
+
+
+
+
+
 # Объектно ориентированное программирование (ООП) (encapsulation)
 # класс - прототип будущего объекта который описывает его свойства и поведение
 # класс - данные и методы по их обработке
@@ -9,16 +54,16 @@
 
 # Геттеры и сеттеры
 
-from lib import Sorter
-
-s = Sorter()
-
-s.add_word('так')
-s.add_word('привет')
-s.add_word('пока')
-s.add_word('здорово')
-
-print(s.result())
+# from lib import Sorter
+#
+# s = Sorter()
+#
+# s.add_word('так')
+# s.add_word('привет')
+# s.add_word('пока')
+# s.add_word('здорово')
+#
+# print(s.result())
 
 # from lib import Separator
 #
