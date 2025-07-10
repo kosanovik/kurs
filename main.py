@@ -31,7 +31,8 @@ class Circle(Shape):
     def get_name(self):
         return self.name
 
-class Rectangle(Circle):
+
+class Rectangle(Shape):
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -50,7 +51,6 @@ class Rectangle(Circle):
 class Square(Rectangle):
     def __init__(self, side):
         super().__init__(side, side)
-        self.side = side
         self.name = 'квадрат'
 
     # def perimetr(self):
@@ -62,7 +62,7 @@ class Square(Rectangle):
 class Triangle(Square):
     def __init__(self, side):
         super().__init__(side)
-        self
+        self.side = side
         self.name = "трекгольник"
 
     def area(self):
@@ -71,14 +71,18 @@ class Triangle(Square):
     def perimetr(self):
         return self.side * 3
 
-    def get_name(self):
-        return self.name
 
 s = Square(5)
 print(s.area())
 print(s.perimetr())
 print(s.get_name())
 s.info()
+
+circle = Circle(5)
+print(circle.area())
+print(circle.perimetr())
+print(circle.get_name())
+circle.info()
 
 tr = Triangle(8)
 print(tr.area())
