@@ -1,3 +1,26 @@
+# Периодические задачи
+import schedule # расписание с английского
+import datetime
+
+i = 1
+
+def job():
+    global i
+    print(f"Скрипт запустился {i}-раз")
+    i += 1
+    t = datetime.datetime.now()
+    print('Время:', t.strftime('%H:%M:%S'))
+
+schedule.every(1).seconds.do(job)
+
+while True:
+    schedule.run_pending()
+
+
+
+
+
+
 # Протоколы
 # Протокол совокупность правил, регламентирущих функционал передачи данных между компонентов компьютерной сети
 # TCP / IP
@@ -19,18 +42,18 @@
 # ../images/
 # dir, cp(copy), mkdir(make), rm(delete), mv(move)
 
-import sys
-
-print('Я', sys.argv[0], 'и мой аргумент', sys.argv[1])
-
-if len(sys.argv) >= 2:
-    match sys.argv[1]:
-        case 'p':
-            print('Привет')
-        case 'g':
-            print('Пока')
-        case _:
-            print('Не понял')
+# import sys
+#
+# print('Я', sys.argv[0], 'и мой аргумент', sys.argv[1])
+#
+# if len(sys.argv) >= 2:
+#     match sys.argv[1]:
+#         case 'p':
+#             print('Привет')
+#         case 'g':
+#             print('Пока')
+#         case _:
+#             print('Не понял')
 
 
 # ООП
