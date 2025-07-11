@@ -15,7 +15,22 @@
 # URL - Uniform Resourse Locator
 # http(s)://домен.зона/page1/?param1=value1&param2=value2
 
+# ./images/
+# ../images/
+# dir, cp(copy), mkdir(make), rm(delete), mv(move)
 
+import sys
+
+print('Я', sys.argv[0], 'и мой аргумент', sys.argv[1])
+
+if len(sys.argv) >= 2:
+    match sys.argv[1]:
+        case 'p':
+            print('Привет')
+        case 'g':
+            print('Пока')
+        case _:
+            print('Не понял')
 
 
 # ООП
@@ -27,53 +42,53 @@
 # 	Класс BankAccount с атрибутами: _owner_name, balance.
 # 	Методы: deposit(amount), withdraw(amount), get_balance().
 
-from abc import ABC, abstractmethod
+# from abc import ABC, abstractmethod
+#
+#
+# class Animal:
+#     @abstractmethod
+#     def make_sound(self):
+#         pass
+#
+#
+# class Dog(Animal):
+#     def make_sound(self):
+#         return "Гаф"
+#
+#
+# class Cat(Animal):
+#     def make_sound(self):
+#         return "Мяу"
+#
+#
+# class Elephant(Animal):
+#     def make_sound(self):
+#         return "Протрубил"
+#
+#
+# class Zoo:
+#     def __init__(self):
+#         self.animals = []
+#
+#     def add_animal(self, animal):
+#         self.animals.append(animal)
+#
+#     def make_all_sounds(self):
+#         for animal in self.animals:
+#             print(animal.make_sound())
 
 
-class Animal:
-    @abstractmethod
-    def make_sound(self):
-        pass
-
-
-class Dog(Animal):
-    def make_sound(self):
-        return "Гаф"
-
-
-class Cat(Animal):
-    def make_sound(self):
-        return "Мяу"
-
-
-class Elephant(Animal):
-    def make_sound(self):
-        return "Протрубил"
-
-
-class Zoo:
-    def __init__(self):
-        self.animals = []
-
-    def add_animal(self, animal):
-        self.animals.append(animal)
-
-    def make_all_sounds(self):
-        for animal in self.animals:
-            print(animal.make_sound())
-
-
-dog = Dog()
-cat = Cat()
-elephant = Elephant()
-
-zoo = Zoo()
-
-zoo.add_animal(dog)
-zoo.add_animal(cat)
-zoo.add_animal(elephant)
-
-zoo.make_all_sounds()
+# dog = Dog()
+# cat = Cat()
+# elephant = Elephant()
+#
+# zoo = Zoo()
+#
+# zoo.add_animal(dog)
+# zoo.add_animal(cat)
+# zoo.add_animal(elephant)
+#
+# zoo.make_all_sounds()
 
 
 
