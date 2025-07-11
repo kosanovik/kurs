@@ -1,3 +1,23 @@
+# Протоколы
+# Протокол совокупность правил, регламентирущих функционал передачи данных между компонентов компьютерной сети
+# TCP / IP
+# TCP - transmission Control Protocol (TCP) (протокол управления передачи) - управляет потоками, проверяет чтобы были пакеты собраны и не были повреждены
+# IP - Internet Protocol - разбивает сообщения (посылки) на пакеты (IP-дейтограммы), определяет маршруты, принимает и обрабатывает
+# HTTP(S) - протокол передачи гипертекста (Huper Text Transfer Protocol (Secured))
+# FTP - file transfer protocol
+# SMTP - Simpole Mail Transfer Protocol
+# Хост-система
+# 1. Обязательная (дружественная для ПК) - IP-адрес: 195(сети различного класса).34.32.11(адрес пк в сети)
+# 2. Необязательная (дружественная для пользователя) - DNS (Domain Name System)
+# https://www.yandex(доменное имя).msk.ru(принадлежность)
+# nic.ru / reg.ru / whois.ru(com)
+# ASCII
+# URL - Uniform Resourse Locator
+# http(s)://домен.зона/page1/?param1=value1&param2=value2
+
+
+
+
 # ООП
 
 #       Условия:
