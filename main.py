@@ -1,31 +1,89 @@
 # ООП
 
-class BankAccount:
-    def __init__(self, owner, balance=0):
-        self._owner = owner
-        self._balance = balance
+#       Условия:
+# 	Базовый класс Animal с методом make_sound().
+# 	Классы-наследники: Dog, Cat, Elephant с переопределением звуков.
+# 	Класс Zoo хранит список животных и метод make_all_sounds().
+# 	Класс BankAccount с атрибутами: _owner_name, balance.
+# 	Методы: deposit(amount), withdraw(amount), get_balance().
 
-    def get_balance(self):
-        return self._balance
+from abc import ABC, abstractmethod
 
-    def deposit(self, amount):
-        if amount > 0:
-            self._balance += amount
-            print(f"Депозит пополнен на сумму {amount}")
-        else:
-            print(f"Нельзя вводить отрицательную сумму на депозит.")
 
-    def withdraw(self, amount):
-        if 0 < amount <= self._balance:
-            self._balance -= amount
-            print(f"с депозита снята сумма {amount}.")
-        else:
-            print(f"Не хватает средств. Овердрафт не доступен.")
+class Animal:
+    @abstractmethod
+    def make_sound(self):
+        pass
 
-client1 = BankAccount("Jonh")
-client1.deposit(500)
-client1.withdraw(400)
-print("Остаток:", client1.get_balance())
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Гаф"
+
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Мяу"
+
+
+class Elephant(Animal):
+    def make_sound(self):
+        return "Протрубил"
+
+
+class Zoo:
+    def __init__(self):
+        self.animals = []
+
+    def add_animal(self, animal):
+        self.animals.append(animal)
+
+    def make_all_sounds(self):
+        for animal in self.animals:
+            print(animal.make_sound())
+
+
+dog = Dog()
+cat = Cat()
+elephant = Elephant()
+
+zoo = Zoo()
+
+zoo.add_animal(dog)
+zoo.add_animal(cat)
+zoo.add_animal(elephant)
+
+zoo.make_all_sounds()
+
+
+
+
+# class BankAccount:
+#     def __init__(self, owner, balance=0):
+#         self._owner = owner
+#         self._balance = balance
+#
+#     def get_balance(self):
+#         return self._balance
+#
+#     def deposit(self, amount):
+#         if amount > 0:
+#             self._balance += amount
+#             print(f"Депозит пополнен на сумму {amount}")
+#         else:
+#             print(f"Нельзя вводить отрицательную сумму на депозит.")
+#
+#     def withdraw(self, amount):
+#         if 0 < amount <= self._balance:
+#             self._balance -= amount
+#             print(f"с депозита снята сумма {amount}.")
+#         else:
+#             print(f"Не хватает средств. Овердрафт не доступен.")
+#
+# client1 = BankAccount("Jonh")
+# client1.deposit(500)
+# client1.withdraw(400)
+# print("Остаток:", client1.get_balance())
 
 
 
