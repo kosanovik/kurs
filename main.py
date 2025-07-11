@@ -1,20 +1,26 @@
-# Периодические задачи
-import schedule # расписание с английского
-import datetime
 
-i = 1
 
-def job():
-    global i
-    print(f"Скрипт запустился {i}-раз")
-    i += 1
-    t = datetime.datetime.now()
-    print('Время:', t.strftime('%H:%M:%S'))
 
-schedule.every(1).seconds.do(job)
 
-while True:
-    schedule.run_pending()
+
+
+# # Периодические задачи
+# import schedule # расписание с английского
+# import datetime
+#
+# i = 1
+#
+# def job():
+#     global i
+#     print(f"Скрипт запустился {i}-раз")
+#     i += 1
+#     t = datetime.datetime.now()
+#     print('Время:', t.strftime('%H:%M:%S'))
+#
+# schedule.every(1).seconds.do(job)
+#
+# while True:
+#     schedule.run_pending()
 
 
 
