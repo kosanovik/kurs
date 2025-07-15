@@ -1,4 +1,33 @@
+# Базы данных
 
+# 1. Импорт библиотеки sqlite3
+# 2. Подключение к БД
+# 3. Назначить "курсор"
+# 4. Работаем с БД (запросы и ответы)
+# 5. Отключаемся от БД
+
+import sqlite3
+
+# подключаемся
+connection = sqlite3.connect("db/movies.sqlite")
+
+# курсор
+cursor = connection.cursor()
+
+# запрос (с помощью курсора)
+result = cursor.execute(
+    """
+    SELECT title, year FROM films
+    WHERE year = 2010
+    """
+)
+# fetchall - все
+# fetchnone - только первое соотвествие
+# fetchmany(N) - N - соответствий
+array = result.fetchall()
+
+for title, year in array:
+    print(title, year)
 
 
 
