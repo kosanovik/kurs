@@ -1,11 +1,13 @@
 # Введение во Flask
 # MVC-(Model View Controller)
-#
+# GET - запрашивает данные (read)
+# POST - отправляет данные на сервер (submit)
+# PUT - заменяет все на сервере из контекста запроса ("заменить")
+# DELETE - удаляет указанные данные ("удалить")
+# PATCH - частичное изменение данных
 
-
+from flask import Flask, url_for, request
 import sqlite3
-from flask import Flask, url_for
-
 
 app = Flask(__name__)
 debug = False
@@ -64,7 +66,6 @@ def sample_page2():
 #     x += 1
 #     return str(x)
 
-
 # <string> - по умолчанию строка
 # <int:number> - целое
 # <float:number> - десятичная дробь
@@ -99,6 +100,18 @@ def get_user(id_num=None):
     <td>{city}</td>
     </tr>
     </table>'''
+
+
+@app.route('/form-test', methods=["POST", "GET"])
+def form_test():
+    if request.method == "GET":
+        with open('form.html', 'r', encoding='utf-8') as html:
+            return html.read()
+    elif request.method == "POST":
+        # print(request.form['gender'])
+        # print(request.form['email'])
+        print(request.form)
+        return "Форма успешно отправлена"
 
 
 if __name__ == "__main__":
