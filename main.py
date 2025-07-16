@@ -70,7 +70,32 @@ def sample_page2():
 # <float:number> - десятичная дробь
 # <path:p> - может содержать слеши для указания пути
 # <uuid:id> - строка-идентификатор (16 - байт в HEX-формате)
+@app.route('/greeting/<user>/<int:id_num>')
+def greeting(user, id_num):
+    return f"Привет, {user} с id={id_num}"
 
+
+@app.route('/get-user/<int:id_num>')
+def get_user(id_num):
+    con = sqlite3.connect('db/movies.sqlite')
+    cur = con.cursor()
+    query = f'SELECT name, city FROM users WHERE trip_id={id_num}'
+    response = cur.execute(query)
+    result = response.fetchone()
+    # print(result)
+    name, city = result
+    cur.close()
+    con.close()
+    return f'''<table border="1">
+    <tr>
+    <td>ФИО</td>
+    <td>Город</td>
+    </tr>
+    <tr>
+    <td>{name}</td>
+    <td>{city}</td>
+    </tr>
+    </table>'''
 
 
 if __name__ == "__main__":
