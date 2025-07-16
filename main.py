@@ -1,9 +1,9 @@
 # Введение во Flask
 # MVC-(Model View Controller)
 #
-from fileinput import filename
-from tkinter import image_names
 
+
+import sqlite3
 from flask import Flask, url_for
 
 
@@ -49,6 +49,29 @@ def sample_page():
             </body>
             </html>
     """
+
+
+@app.route('/sample-page2')
+def sample_page2():
+    with open('temp.html', 'r', encoding='utf-8') as html:
+        return html.read()
+
+# Так делать не будем
+# x = 5
+# @app.route('/1')
+# def show_num():
+#     global x
+#     x += 1
+#     return str(x)
+
+
+# <string> - по умолчанию строка
+# <int:number> - целое
+# <float:number> - десятичная дробь
+# <path:p> - может содержать слеши для указания пути
+# <uuid:id> - строка-идентификатор (16 - байт в HEX-формате)
+
+
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=debug) # localhost - 127.0.0.1
