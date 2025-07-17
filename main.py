@@ -5,13 +5,11 @@
 # PUT - заменяет все на сервере из контекста запроса ("заменить")
 # DELETE - удаляет указанные данные ("удалить")
 # PATCH - частичное изменение данных
-# JINJA -
+# JINJA - переменные, условия, циклы и т.д.
+# ORM - Object Relation Mapping
 import os.path
-from fileinput import filename
-from pydoc import render_doc
 from forms.loginform import LoginForm
 from flask import Flask, url_for, request, render_template
-from openpyxl.styles.builtins import title
 from werkzeug.utils import secure_filename
 import sqlite3
 
