@@ -5,6 +5,7 @@
 # PUT - заменяет все на сервере из контекста запроса ("заменить")
 # DELETE - удаляет указанные данные ("удалить")
 # PATCH - частичное изменение данных
+# JINJA -
 import os.path
 from fileinput import filename
 from pydoc import render_doc
@@ -27,10 +28,13 @@ def allowed_file(filename):
 @app.route("/")
 @app.route("/index")
 def index():
+    params = {}
+    params["user"] = "слушатель"
+    params["title"] = "приветсвие"
+    params["weather"] = "Сегодня хорошая погода"
     username = 'слушатель'
     return render_template("index.html",
-                           title="Приветсвие",
-                           user=username)
+                           **params)
 
 
 @app.route("/about")
@@ -149,6 +153,11 @@ def file_upload():
             return f"Файл {new_name} загружен успешно!"
     return "Ошибка загрузки"
 
+
+@app.route("/numbers")
+def odd_even():
+    return render_template("numbers.html",
+                           title="Чет-нечет", number=2)
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=debug) # localhost - 127.0.0.1
