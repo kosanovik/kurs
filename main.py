@@ -9,7 +9,7 @@
 import os.path
 from fileinput import filename
 from pydoc import render_doc
-
+from forms.loginform import LoginForm
 from flask import Flask, url_for, request, render_template
 from openpyxl.styles.builtins import title
 from werkzeug.utils import secure_filename
@@ -17,8 +17,10 @@ import sqlite3
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
+app.config["SECRET_KEY"] = "just_secret_key"
 ALLOWED_EXTENSION = ['txt', 'pdf', 'zip', 'jpg', 'png']
 debug = False
+
 
 def allowed_file(filename):
     return ('.' in filename and
@@ -40,7 +42,25 @@ def index():
 @app.route("/about")
 def about():
     print("Вызвана функция about")
-    return "О нас"
+    return render_template("about.html",
+                           title='О нас')
+    # return "О нас"
+
+
+@app.route("/contacts")
+def contacts():
+    print("Вызвана функция contacts")
+    return render_template("contacts.html",
+                           title='Свяжитесь с нами')
+    # return "Контакты"
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return 'Форма отправлена'
+    return render_template('login.html', title='Авторизация', form=form)
 
 
 @app.route("/countdown")
@@ -53,7 +73,7 @@ def cd():
 
 @app.route("/image")
 def show_image():
-#    return '<img src="./static/images/python.jpg">'
+    #    return '<img src="./static/images/python.jpg">'
     return f'<img src="{url_for('static', filename='images/python2.jpg')}">'
 
 
@@ -75,6 +95,7 @@ def sample_page():
 def sample_page2():
     with open('temp.html', 'r', encoding='utf-8') as html:
         return html.read()
+
 
 # Так делать не будем
 # x = 5
@@ -155,9 +176,14 @@ def file_upload():
 
 
 @app.route("/numbers")
-def odd_even():
+@app.route("/numbers/<int:num>")
+def odd_even(num=None):
+    if num is None:
+        return render_template("numbers.html",
+                               title="Нет числа", number="")
     return render_template("numbers.html",
-                           title="Чет-нечет", number=2)
+                           title="Чет-нечет", number=num)
+
 
 @app.route("/deals")
 def printlist():
@@ -175,5 +201,6 @@ def queue():
     # loop.last - True, если последняя итерация
     return render_template("vars.html", title="Стоим в очереди")
 
+
 if __name__ == "__main__":
-    app.run(host="localhost", port=5000, debug=debug) # localhost - 127.0.0.1
+    app.run(host="localhost", port=5000, debug=debug)  # localhost - 127.0.0.1
