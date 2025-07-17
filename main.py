@@ -161,9 +161,19 @@ def odd_even():
 
 @app.route("/deals")
 def printlist():
-    deal = ["Помыть посуду", "Выгулять посуду", "Сходить в магазин", "Написать код"]
+    deal = ["Помыть посуду", "Выгулять посуду",
+            "Сходить в магазин", "Написать код"]
     return render_template("printlist.html",
                            deals=deal)
+
+
+@app.route("/queue")
+def queue():
+    # loop.index - номер итерации начиная с 1
+    # loop.index0 - номер итерации начиная с 0
+    # loop.first - True, если первая итерация
+    # loop.last - True, если последняя итерация
+    return render_template("vars.html", title="Стоим в очереди")
 
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=debug) # localhost - 127.0.0.1
