@@ -159,5 +159,11 @@ def odd_even():
     return render_template("numbers.html",
                            title="Чет-нечет", number=2)
 
+@app.route("/deals")
+def printlist():
+    deal = ["Помыть посуду", "Выгулять посуду", "Сходить в магазин", "Написать код"]
+    return render_template("printlist.html",
+                           deals=deal)
+
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=debug) # localhost - 127.0.0.1
