@@ -7,8 +7,10 @@
 # PATCH - частичное изменение данных
 import os.path
 from fileinput import filename
+from pydoc import render_doc
 
-from flask import Flask, url_for, request
+from flask import Flask, url_for, request, render_template
+from openpyxl.styles.builtins import title
 from werkzeug.utils import secure_filename
 import sqlite3
 
@@ -25,8 +27,10 @@ def allowed_file(filename):
 @app.route("/")
 @app.route("/index")
 def index():
-    print("Вызвана функция index")
-    return "Привет, Flask"
+    username = 'слушатель'
+    return render_template("index.html",
+                           title="Приветсвие",
+                           user=username)
 
 
 @app.route("/about")
