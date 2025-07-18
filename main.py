@@ -11,6 +11,10 @@
 import os.path
 from sqlite3 import Error
 
+from flask_login import LoginManager
+from openpyxl.styles.builtins import title
+from pyexpat.errors import messages
+
 from data.news import News
 from forms.loginform import LoginForm
 from flask import Flask, url_for, request, render_template
@@ -20,6 +24,10 @@ from data.users import User
 import sqlite3
 
 app = Flask(__name__)
+
+login_manger = LoginManager()
+login_manger.init_app(app)
+
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 app.config['SECRET_KEY'] = 'just_secret_key'
 ALLOWED_EXTENSIONS = ['txt', 'pdf', 'zip', 'jpg', 'png']
@@ -29,6 +37,12 @@ debug = False
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    db_sess = db_session.create_session()
+    return db_sess.query(User).get(user_id)
 
 
 @app.errorhandler(404)
@@ -63,8 +77,45 @@ def contacts():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        return 'Форма отправлена'
+        db_sess = db_session.create_session()
+        user = db_sess.query(User).filter(User.email == form.email.data)
+        if user and user.chek_password(form.password.data):
+            login_user(user, remember=form.remember_me.data)
+            return redirect('/')
+        return render_template("login.html", message="Неверный логин или пароль")
     return render_template('login.html', title='Авторизация', form=form)
+
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    form = Register()
+    if form.validate_on_submit():  # тоже самое, что и request.method == 'POST'
+        # если пароли не совпали
+        if form.password.data != form.password_again.data:
+            return render_template('register.html',
+                                   title='Регистрация',
+                                   message='Пароли не совпадают',
+                                   form=form)
+
+        db_sess = db_session.create_session()
+
+        # Если пользователь с таким E-mail в базе уже есть
+        if db_sess.query(User).filter(User.email == form.email.data).first():
+            return render_template('register.html',
+                                   title='Регистрация',
+                                   message='Такой пользователь уже есть',
+                                   form=form)
+        user = User(
+            name=form.name.data,
+            email=form.email.data,
+            about=form.about.data
+        )
+        user.set_password(form.password.data)
+        db_sess.add(user)
+        db_sess.commit()
+        return redirect('/login')
+    return render_template('register.html',
+                           title='Регистрация', form=form)
 
 
 @app.route('/countdown')
@@ -215,15 +266,24 @@ def queue():
     return render_template('vars.html', title='Стоим в очереди')
 
 
-@app.route
+# Вывод всех публичных новостей (is_private == False)
+@app.route('/news')
+def news():
+    db_sess = db_session.create_session()
+    all_news = db_sess.query(News).filter(News.is_private != True).all()
+    # print(all_news)
+    return render_template('news.html',
+                           title='Новости', news=all_news)
+
 
 if __name__ == '__main__':
     db_session.global_init('db/news.sqlite')
-    # app.run(host='127.0.0.1', port=5000, debug=debug)
-    db_sess = db_session.create_session()
-    user = db_sess.query(User).filter(User.id == 1).first()
-    for news in user.news:
-        print(news)
+    app.run(host='127.0.0.1', port=5000, debug=debug)
+
+    # db_sess = db_session.create_session()
+    # user = db_sess.query(User).filter(User.id == 1).first()
+    # for news in user.news:
+    #     print(news)
     # print(user.id)
     # news = News(title='Third News', content='Third Content',
     #              is_private=False)
