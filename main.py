@@ -25,6 +25,11 @@ def allowed_file(filename):
             filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSION)
 
 
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html', title='Не найдено')
+
+
 @app.route("/")
 @app.route("/index")
 def index():
