@@ -2,27 +2,30 @@
 # MVC-(Model View Controller)
 # GET - запрашивает данные (read)
 # POST - отправляет данные на сервер (submit)
-# PUT - заменяет все на сервере из контекста запроса ("заменить")
+# PUT - заменяет всё на сервере из контекста запроса ("заменить")
 # DELETE - удаляет указанные данные ("удалить")
 # PATCH - частичное изменение данных
 # JINJA - переменные, условия, циклы и т.д.
-# ORM - Object Relation Mapping
+# ORM - Object Relational Mapping
 import os.path
+from sqlite3 import Error
+
 from forms.loginform import LoginForm
 from flask import Flask, url_for, request, render_template
 from werkzeug.utils import secure_filename
+from data import db_session
 import sqlite3
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
-app.config["SECRET_KEY"] = "just_secret_key"
-ALLOWED_EXTENSION = ['txt', 'pdf', 'zip', 'jpg', 'png']
+app.config['SECRET_KEY'] = 'just_secret_key'
+ALLOWED_EXTENSIONS = ['txt', 'pdf', 'zip', 'jpg', 'png']
 debug = False
 
 
 def allowed_file(filename):
-    return ('.' in filename and
-            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSION)
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.errorhandler(404)
@@ -30,32 +33,27 @@ def not_found(e):
     return render_template('404.html', title='Не найдено')
 
 
-@app.route("/")
-@app.route("/index")
+@app.route('/')
+@app.route('/index')
 def index():
     params = {}
-    params["user"] = "слушатель"
-    params["title"] = "приветсвие"
-    params["weather"] = "Сегодня хорошая погода"
-    username = 'слушатель'
-    return render_template("index.html",
+    params['user'] = 'слушатель'
+    params['title'] = 'приветствие'
+    params['weather'] = 'Сегодня хорошая погода'
+    return render_template('index.html',
                            **params)
 
 
-@app.route("/about")
+@app.route('/about')
 def about():
-    print("Вызвана функция about")
-    return render_template("about.html",
-                           title='О нас')
-    # return "О нас"
+    return render_template('about.html',
+                           title='Про нас')
 
 
-@app.route("/contacts")
+@app.route('/contacts')
 def contacts():
-    print("Вызвана функция contacts")
-    return render_template("contacts.html",
+    return render_template('contacts.html',
                            title='Свяжитесь с нами')
-    # return "Контакты"
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -66,29 +64,28 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
-@app.route("/countdown")
+@app.route('/countdown')
 def cd():
     lst = [str(x) for x in reversed(range(10))]
-    lst.append("Полетели!!!")
-    print("Вызвана функция countdown")
-    return "<br>".join(lst)
+    lst.append('Полетели!!!')
+    return '<br>'.join(lst)
 
 
-@app.route("/image")
+@app.route('/image')
 def show_image():
-    #    return '<img src="./static/images/python.jpg">'
-    return f'<img src="{url_for('static', filename='images/python2.jpg')}">'
+    return f'<img src="{url_for('static', filename='images/python.jpg')}">'
 
 
 @app.route('/sample-page')
 def sample_page():
     return f"""<!DOCTYPE html>
             <html lang="ru">
-                <head><meta charset="UTF-8">
+            <head>
+                <meta charset="UTF-8">
                 <title>Картинка Питона</title>
             </head>
             <body>
-                <img src="{url_for('static', filename='images/python2.jpg')}" alt="Python">
+                <img src="{url_for('static', filename='images/python.jpg')}" alt="Python">
             </body>
             </html>
     """
@@ -100,7 +97,7 @@ def sample_page2():
         return html.read()
 
 
-# Так делать не будем
+# Так делать мы не будем
 # x = 5
 # @app.route('/1')
 # def show_num():
@@ -110,100 +107,111 @@ def sample_page2():
 
 # <string> - по умолчанию строка
 # <int:number> - целое
-# <float:number> - десятичная дробь
-# <path:p> - может содержать слеши для указания пути
-# <uuid:id> - строка-идентификатор (16 - байт в HEX-формате)
-@app.route('/greeting/<user>/<int:id_num>')
+# <float:number> - дес. дробь
+# <path:p> - может содержать слэши для указания пути
+# <uuid:id> - строка-идентификатор (16-байт в HEX-формате)
+@app.route('/greeting/<string:user>/<int:id_num>')
 def greeting(user, id_num):
-    return f"Привет, {user} с id={id_num}"
+    return f'Привет, {user} c id={id_num}'
 
 
 @app.route('/get-user/')
 @app.route('/get-user/<int:id_num>')
 def get_user(id_num=None):
-    if id_num is None:
-        return 'Нет номера записи'
-    con = sqlite3.connect('db/movies.sqlite')
-    cur = con.cursor()
-    query = f'SELECT name, city FROM users WHERE trip_id={id_num}'
-    response = cur.execute(query)
-    result = response.fetchone()
-    # print(result)
-    name, city = result
-    cur.close()
-    con.close()
-    return f'''<table border="1">
-    <tr>
-    <td>ФИО</td>
-    <td>Город</td>
-    </tr>
-    <tr>
-    <td>{name}</td>
-    <td>{city}</td>
-    </tr>
-    </table>'''
+    try:
+        # Подключение к базе данных
+        con = sqlite3.connect('db/movies.sqlite')
+        cur = con.cursor()
+
+        if id_num is None:
+            # Получение списка всех пользователей
+            query = 'SELECT trip_id, name FROM users'
+            response = cur.execute(query)
+            result = response.fetchall()
+            return render_template('get_user.html', users=result)
+
+        # Получение информации о конкретном пользователе
+        query = 'SELECT name, city, date_first FROM users WHERE trip_id=?'
+        response = cur.execute(query, (id_num,))
+        result = response.fetchone()
+
+        if result:
+            name, city, date_first = result
+            return render_template('get_user.html',
+                                   name=name,
+                                   city=city,
+                                   start=date_first)
+        else:
+            return "Пользователь не найден", 404
+
+    except Error as e:
+        return f"Произошла ошибка: {str(e)}", 500
+
+    finally:
+        # Гарантированное закрытие соединения
+        if con:
+            cur.close()
+            con.close()
 
 
-@app.route('/form-test', methods=["POST", "GET"])
+@app.route('/form-test', methods=['POST', 'GET'])
 def form_test():
-    if request.method == "GET":
+    if request.method == 'GET':
         with open('form.html', 'r', encoding='utf-8') as html:
             return html.read()
-    elif request.method == "POST":
-        # print(request.form['gender'])
-        # print(request.form['email'])
+    elif request.method == 'POST':
         print(request.form)
-        return "Форма успешно отправлена"
+        return 'Форма успешно отправлена'
 
 
-@app.route('/upload', methods=["POST", "GET"])
+@app.route('/upload', methods=['POST', 'GET'])
 def file_upload():
-    if request.method == "GET":
+    if request.method == 'GET':
         with open('upload.html', 'r', encoding='utf-8') as html:
             return html.read()
-    elif request.method == "POST":
-        # print(request.files) # отладка
-        if "file" not in request.files:
-            return "Файл не был выбран!"
+    elif request.method == 'POST':
+        # print(request.files)
+        if 'file' not in request.files:
+            return 'Файл не был выбран!!!'
 
-        file = request.files["file"]
+        file = request.files['file']
 
-        if file.filename == "":
-            return "Файл без имени"
+        if file.filename == '':
+            return 'Файл не был выбран!!!'
 
         if file and allowed_file(file.filename):
             new_name = secure_filename(file.filename)
-            file.save(os.path.join(app.config["UPLOAD_FOLDER"], new_name))
-            return f"Файл {new_name} загружен успешно!"
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], new_name))
+            return f'Файл {new_name} успешно загружен!'
     return "Ошибка загрузки"
 
 
-@app.route("/numbers")
-@app.route("/numbers/<int:num>")
+@app.route('/numbers/')
+@app.route('/numbers/<int:num>')
 def odd_even(num=None):
     if num is None:
-        return render_template("numbers.html",
-                               title="Нет числа", number="")
-    return render_template("numbers.html",
-                           title="Чет-нечет", number=num)
+        return render_template('numbers.html',
+                               title='Нет числа', number='')
+    return render_template('numbers.html',
+                           title='Чет-нечёт', number=num)
 
 
-@app.route("/deals")
+@app.route('/deals')
 def printlist():
-    deal = ["Помыть посуду", "Выгулять посуду",
-            "Сходить в магазин", "Написать код"]
-    return render_template("printlist.html",
-                           deals=deal)
+    deal = ['Помыть посуду', 'Выгулять собаку',
+            'Снять показания счётчика', 'Сходить в магазин']
+    return render_template('printlist.html', deals=deal)
 
 
-@app.route("/queue")
+@app.route('/queue')
 def queue():
-    # loop.index - номер итерации начиная с 1
-    # loop.index0 - номер итерации начиная с 0
+    # loop.index - номер итерации, начиная с 1
+    # loop.index0 - номер итерации, начиная с 0
     # loop.first - True, если первая итерация
     # loop.last - True, если последняя итерация
-    return render_template("vars.html", title="Стоим в очереди")
+    return render_template('vars.html', title='Стоим в очереди')
 
 
-if __name__ == "__main__":
-    app.run(host="localhost", port=5000, debug=debug)  # localhost - 127.0.0.1
+if __name__ == '__main__':
+    db_session.global_init('db/news.sqlite')
+    app.run(host='127.0.0.1', port=5000, debug=debug)
