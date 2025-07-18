@@ -11,6 +11,7 @@
 import os.path
 from sqlite3 import Error
 
+from data.news import News
 from forms.loginform import LoginForm
 from flask import Flask, url_for, request, render_template
 from werkzeug.utils import secure_filename
@@ -214,16 +215,28 @@ def queue():
     return render_template('vars.html', title='Стоим в очереди')
 
 
+@app.route
+
 if __name__ == '__main__':
     db_session.global_init('db/news.sqlite')
     # app.run(host='127.0.0.1', port=5000, debug=debug)
-    # user = User()
     db_sess = db_session.create_session()
     user = db_sess.query(User).filter(User.id == 1).first()
-    print(user)
-    db_sess.delete(user)
-    # user.set_username('John')
-    db_sess.commit()
+    for news in user.news:
+        print(news)
+    # print(user.id)
+    # news = News(title='Third News', content='Third Content',
+    #              is_private=False)
+    # user.news.append(news)
+    # # db_sess.add(news)
+    # db_sess.commit()
+    # user = User()
+    # db_sess = db_session.create_session()
+    # user = db_sess.query(User).filter(User.id == 1).first()
+    # print(user)
+    # db_sess.delete(user)
+    # # user.set_username('John')
+    # db_sess.commit()
     # user.name = 'User2'
     # user.about = 'Данные про User2'
     # user.email = 'b@c.ru'
