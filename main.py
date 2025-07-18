@@ -217,13 +217,16 @@ def queue():
 if __name__ == '__main__':
     db_session.global_init('db/news.sqlite')
     # app.run(host='127.0.0.1', port=5000, debug=debug)
-    user = User()
+    # user = User()
     db_sess = db_session.create_session()
-    first = db_sess.query(User).filter(User.id !=1, User.email.not_like("%a%")).all()
-    print(first)
-    # user.name = 'User1'
-    # user.about = 'Данные про User3'
-    # user.email = "c@d.ru"
+    user = db_sess.query(User).filter(User.id == 1).first()
+    print(user)
+    db_sess.delete(user)
+    # user.set_username('John')
+    db_sess.commit()
+    # user.name = 'User2'
+    # user.about = 'Данные про User2'
+    # user.email = 'b@c.ru'
     # db_sess = db_session.create_session()
     # db_sess.add(user)
     # db_sess.commit()
