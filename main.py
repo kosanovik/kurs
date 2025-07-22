@@ -388,7 +388,9 @@ def adminpanel():
 @app.route('/testapi')
 def testapi():
     res = requests.get('http://localhost:5000/api/news').json()
-    return res
+    return render_template('testapi.html',
+                           title='Тест API',
+                           news=res)
 
 
 if __name__ == '__main__':
